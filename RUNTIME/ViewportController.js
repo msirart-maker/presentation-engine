@@ -22,7 +22,7 @@
       this.lastWidth=metrics.width;this.lastHeight=height;this.lastOrientation=orientation;
       const layoutChanged=force||widthChanged||orientationChanged;this.state.update({viewport:{width:metrics.width,height},orientation},'viewport');this.bus.emit('viewport',{...metrics,height,orientation,profile,layoutChanged,widthChanged,orientationChanged,source});return true;
     }
-    onResize(){clearTimeout(this.timer);const next=this.metrics();if(this.isBrowserChromeResize(next))return;this.timer=setTimeout(()=>this.apply(false,'resize'),90)}
+    onResize(){clearTimeout(this.timer);const next=this.metrics();if(this.isBrowserChromeResize(next))return;this.state.pendingLayoutAnchor ||= this.state.state.anchor;this.timer=setTimeout(()=>this.apply(false,'resize'),90)}
     async stabilize({timeout=900}={}){
       let previous=this.metrics(),stable=0,start=performance.now();
       while(performance.now()-start<timeout){await V10.utils.wait(70);const next=this.metrics();if(Math.abs(next.width-previous.width)<2&&Math.abs(next.height-previous.height)<2)stable++;else stable=0;previous=next;if(stable>=2)break}
