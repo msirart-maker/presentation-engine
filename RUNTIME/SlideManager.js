@@ -9,7 +9,7 @@
     active(){return this.byId(this.state.state.activeSlideId)||this.at(this.state.state.activeSlideIndex)||this.slides[0]}
     nearest(){
       const stageRect=this.stage.getBoundingClientRect(),anchor=stageRect.top+this.stage.clientHeight*.5;let best=this.slides[0],bestDistance=Infinity;
-      for(const slide of this.slides){const rect=slide.getBoundingClientRect();const distance=Math.abs(rect.top+Math.min(rect.height,this.stage.clientHeight)*.5-anchor);if(distance<bestDistance){bestDistance=distance;best=slide}}
+      for(const slide of this.slides){const rect=slide.getBoundingClientRect();if(rect.top<=anchor&&rect.bottom>anchor)return slide;const distance=Math.min(Math.abs(rect.top-anchor),Math.abs(rect.bottom-anchor));if(distance<bestDistance){bestDistance=distance;best=slide}}
       return best;
     }
     setActive(slide){if(!slide)return;const index=this.indexOf(slide);this.slides.forEach(item=>item.classList.toggle('is-active',item===slide));this.state.setActive(slide,index);return index}

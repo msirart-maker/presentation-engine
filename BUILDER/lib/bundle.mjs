@@ -9,7 +9,7 @@ async function readMany(files){ return (await Promise.all(files.map(file=>fs.rea
 
 export async function cssBundle(){
   return readMany([
-    'DESIGN_SYSTEM/tokens.css','DESIGN_SYSTEM/base.css','DESIGN_SYSTEM/surfaces.css','DESIGN_SYSTEM/style-packs.css','COMPONENTS/components.css','UI_LIBRARIES/ui-recipes.css','ANIMATION/animations.css','RESPONSIVE/responsive.css','RUNTIME/runtime.css','COMPOSITIONS/compositions.css'
+    'DESIGN_SYSTEM/tokens.css','DESIGN_SYSTEM/base.css','DESIGN_SYSTEM/surfaces.css','DESIGN_SYSTEM/style-packs.css','COMPONENTS/components.css','UI_LIBRARIES/ui-recipes.css','ANIMATION/animations.css','RESPONSIVE/responsive.css','RUNTIME/runtime.css','COMPOSITIONS/compositions.css','RESPONSIVE/readability.css'
   ]);
 }
 

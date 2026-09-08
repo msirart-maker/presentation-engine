@@ -1,3 +1,4 @@
+import {normalizeColor} from './color.mjs';
 import {renderComposition} from '../../COMPOSITIONS/render.mjs';
 import {escapeHtml as h, escapeAttr as a, safeUrl, safeMediaUrl, jsonForHtml, classNames} from './html.mjs';
 
@@ -41,8 +42,13 @@ function chartTable(c){
   return `<table>${caption}<thead><tr><th>Category</th><th>Value</th></tr></thead><tbody>${(c.values||[]).map((value,index)=>`<tr><th scope="row">${h(c.labels?.[index]??index+1)}</th><td>${h(value)}${h(c.unit||'')}</td></tr>`).join('')}</tbody></table>`;
 }
 
+function chartLegend(c){
+ const palette=['#e97852','#24a99a','#e3b341','#6d8dd1','#c069ca','#58a86f','#d46a8c','#7d8a96'];
+ const entries=c.series?.length>1?c.series.map((x,i)=>({text:x.name||`Series ${i+1}`,color:c.colors?.[i]||x.color||palette[i%palette.length]})):c.chartType==='donut'?(c.values||[]).map((v,i)=>({text:`${c.labels?.[i]??i+1} · ${v}${c.unit||''}`,color:c.colors?.[i]||palette[i%palette.length]})):[];
+ return entries.length?`<ul class="v135-chart-legend" aria-label="Chart legend">${entries.map(x=>`<li><i aria-hidden="true" style="background:${normalizeColor(x.color)}"></i><span>${h(x.text)}</span></li>`).join('')}</ul>`:'';
+}
 function renderCharts(d){
-  const charts=(d.charts||[d]).map((c,i)=>`<article class="v10-chart-card"><div class="v10-chart-head"><div><small>${h(c.eyebrow||'Data')}</small><h3>${h(c.title||'Chart')}</h3></div>${c.highlight?`<span>${h(c.highlight)}</span>`:''}</div><div class="v10-chart-wrap"><canvas class="v10-chart" tabindex="0" aria-label="${a(c.ariaLabel||c.title||'Data chart')}" data-v10-chart='${a(jsonForHtml({type:c.chartType||'line',labels:c.labels||[],values:c.values||[],series:c.series||[],points:c.points||[],matrix:c.matrix||[],xLabels:c.xLabels||[],yLabels:c.yLabels||[],unit:c.unit||'',min:c.min,max:c.max,target:c.target,total:c.total,colors:c.colors||[],criticalIndex:c.criticalIndex,centerLabel:c.centerLabel,reasons:c.reasons||[],referenceLines:c.referenceLines||[],annotations:c.annotations||[]}))}'></canvas></div><details class="v13-chart-data"><summary>View accessible data table for ${h(c.title||'chart')}</summary>${chartTable(c)}</details></article>`).join('');
+  const charts=(d.charts||[d]).map((c,i)=>`<article class="v10-chart-card"><div class="v10-chart-head"><div><small>${h(c.eyebrow||'Data')}</small><h3>${h(c.title||'Chart')}</h3></div>${c.highlight?`<span>${h(c.highlight)}</span>`:''}</div><div class="v10-chart-wrap"><canvas class="v10-chart" tabindex="0" aria-label="${a(c.ariaLabel||c.title||'Data chart')}" data-v10-chart='${a(jsonForHtml({domLegend:true,type:c.chartType||'line',labels:c.labels||[],values:c.values||[],series:c.series||[],points:c.points||[],matrix:c.matrix||[],xLabels:c.xLabels||[],yLabels:c.yLabels||[],unit:c.unit||'',min:c.min,max:c.max,target:c.target,total:c.total,colors:c.colors||[],criticalIndex:c.criticalIndex,centerLabel:c.centerLabel,reasons:c.reasons||[],referenceLines:c.referenceLines||[],annotations:c.annotations||[]}))}'></canvas></div>${chartLegend(c)}<details class="v13-chart-data"><summary>View accessible data table for ${h(c.title||'chart')}</summary>${chartTable(c)}</details></article>`).join('');
   return `<section class="v10-component v10-charts-section" data-v10-component="Charts">${textBlock(d)}<div class="v10-charts-grid count-${Math.min(2,(d.charts||[d]).length)}">${charts}</div></section>`;
 }
 

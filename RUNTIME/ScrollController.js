@@ -3,7 +3,7 @@
   class ScrollController{
     constructor({stage,slides,state,bus,progress,counter}){this.stage=stage;this.slides=slides;this.state=state;this.bus=bus;this.progress=progress;this.counter=counter;this.raf=0;this.observer=null;this.visibility=new Map();this.currentSlide=null;this.scrollIdleTimer=0;this.onScroll=this.onScroll.bind(this)}
     start(){
-      this.observer=new IntersectionObserver(entries=>{for(const entry of entries)this.visibility.set(entry.target,entry.intersectionRatio);let best=null,ratio=-1;for(const[slide,value]of this.visibility)if(value>ratio){ratio=value;best=slide}if(best&&ratio>0)this.activate(best,'observer')}, {root:this.stage,threshold:[0,.01,.25,.5,.75,1]});
+      this.observer=new IntersectionObserver(()=>{this.activate(this.slides.nearest(),'observer')}, {root:this.stage,threshold:[0,.01,.25,.5,.75,1]});
       this.slides.slides.forEach(slide=>this.observer.observe(slide));for(const event of ['wheel','touchstart'])this.stage.addEventListener(event,()=>this.slides.transition?.cancel(),{passive:true});this.stage.addEventListener('scroll',this.onScroll,{passive:true});this.onScroll()
     }
     layoutPending(){

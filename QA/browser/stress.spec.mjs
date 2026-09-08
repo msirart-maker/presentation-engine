@@ -17,7 +17,7 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
    await slide.evaluate(async el=>{await Promise.all(el.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{})));});
    const metrics=await slide.evaluate(el=>{
     const issues=[];
-    const text=[...el.querySelectorAll('h1,h2,h3,p,li,td,th,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table')&&n.getClientRects().length);
+    const text=[...el.querySelectorAll('h1,h2,h3,p,li,td,th,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table,details:not([open])')&&n.getClientRects().length);
     for(const n of text){
      const r=n.getBoundingClientRect(),style=getComputedStyle(n);
      if(n.matches('p,li,td,th')&&parseFloat(style.fontSize)<12)issues.push({reason:'small-text',text:n.textContent.slice(0,70),size:style.fontSize});
@@ -32,7 +32,7 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
    await slide.screenshot({path:info.outputPath(`${key}.png`)});
    // A small JPEG copy in the authenticated job log permits direct visual review
    // alongside the full-resolution PNG artifacts, without publishing a website.
-   if(info.project.name==='chromium-desktop'){
+   if(info.project.name.startsWith('chromium-')){
     const jpeg=await slide.screenshot({type:'jpeg',quality:55});
     console.log('VISUAL_REVIEW '+JSON.stringify({key,image:jpeg.toString('base64')}));
    }

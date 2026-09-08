@@ -1,0 +1,25 @@
+/* Content may grow vertically; never shrink prose into illegible landscape text. */
+#v10-stage .v10-component-shell,#v10-stage .v10-component,
+#v10-stage .v10-chart-card,#v10-stage .v10-image-card{min-width:0;max-width:100%}
+#v10-stage .v10-component :is(h1,h2,h3,p,li,td,th,blockquote){overflow-wrap:anywhere}
+#v10-stage .v10-component :is(p,li){font-size:max(14px,1rem);line-height:1.5}
+#v10-stage .v10-credit{font-size:12px}
+#v10-stage .v13-ui-table{font-size:14px;line-height:1.5}
+#v10-stage .v13-ui-table th{font:600 13px/1.5 var(--v10-body);letter-spacing:0;text-transform:none}
+#v10-stage .v13-ui-table tbody th{font-size:14px}
+#v10-stage .v13-ui-table-wrap{margin-top:22px}
+#v10-stage .v13-chart-data{font-size:12px}
+#v10-stage .v13-chart-data summary{width:auto;max-width:100%;overflow-wrap:anywhere}
+#v10-stage .v135-chart-legend{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:12px 0}
+#v10-stage .v135-chart-legend li{display:flex;align-items:center;gap:7px;font-size:13px;line-height:1.4}
+.v135-chart-legend i{width:9px;height:9px;flex:none;border-radius:2px}
+#v10-stage .v13-chart-data table{font-size:13px}
+#v10-stage .v13-chart-data[open]{max-height:240px;overflow:auto}
+#v10-stage .v10-chart-wrap{min-width:0;max-width:100%}
+#v10-stage .v10-chart-wrap canvas{max-width:100%}
+@media(max-width:1100px),(max-height:650px){
+ #v10-stage .v10-slide{height:auto;min-height:calc(var(--v10-vh)*100);overflow:visible}
+ #v10-stage .v10-component :is(p,li){font-size:14px}
+ #v10-stage .v13-ui-table th,#v10-stage .v13-ui-table td{padding:10px;font-size:13px}
+ #v10-stage .v10-chart-wrap{min-height:260px}
+}
