@@ -19,7 +19,7 @@
       return{slideId:slide.id,index:this.slides.indexOf(slide),offset:anchorY-rect.top,ratio:(anchorY-rect.top)/Math.max(1,rect.height)};
     }
     restoreAnchor(anchor=this.state.state.anchor){
-      if(!anchor)return;const slide=this.slides.byId(anchor.slideId)||this.slides.at(anchor.index);if(!slide)return;const root=this.stage.getBoundingClientRect(),rect=slide.getBoundingClientRect(),anchorY=root.top+this.stage.clientHeight*.45;const preserved=Number.isFinite(anchor.offset)?anchor.offset:(Number.isFinite(anchor.ratio)?anchor.ratio*rect.height:0);this.stage.scrollTo({top:Math.round(this.stage.scrollTop+rect.top-(anchorY-preserved)),behavior:'instant'});this.activate(slide,'restore');this.onScroll()
+      if(!anchor)return;const slide=this.slides.byId(anchor.slideId)||this.slides.at(anchor.index);if(!slide)return;const root=this.stage.getBoundingClientRect(),rect=slide.getBoundingClientRect(),anchorY=root.top+this.stage.clientHeight*.45;const preserved=Number.isFinite(anchor.ratio)?Math.max(0,Math.min(1,anchor.ratio))*rect.height:(Number.isFinite(anchor.offset)?Math.min(anchor.offset,rect.height*.9):0);this.stage.scrollTo({top:Math.round(this.stage.scrollTop+rect.top-(anchorY-preserved)),behavior:'instant'});this.activate(slide,'restore');this.onScroll()
     }
     suspendSnap(){document.documentElement.dataset.v10PreviousSnap=document.documentElement.dataset.v10Snap||'proximity';document.documentElement.dataset.v10Snap='none'}
     resumeSnap(){document.documentElement.dataset.v10Snap=document.documentElement.dataset.v10PreviousSnap||'proximity';delete document.documentElement.dataset.v10PreviousSnap}

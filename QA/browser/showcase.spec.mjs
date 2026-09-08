@@ -14,7 +14,15 @@ for(const deck of ['Editorial','Technical','Geometric','Cinematic']){
    await expect.poll(()=>page.evaluate(()=>window.__V10_RUNTIME__.transitions.target===null)).toBe(true);
    await expect(slides.nth(i)).toHaveClass(/is-active/);
    await expect(slides.nth(i)).toBeInViewport({ratio:0.4});
-   const layout=await slides.nth(i).evaluate(el=>({width:el.clientWidth,scroll:el.scrollWidth}));
+   await slides.nth(i).evaluate(async el=>{await Promise.all(el.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{})));});
+   const layout=await slides.nth(i).evaluate(el=>{
+    const clipped=[];
+    const text=[...el.querySelectorAll('h1,h2,h3,p,li,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table')&&n.getClientRects().length);
+    for(const n of text){const r=n.getBoundingClientRect();for(let parent=n.parentElement;parent&&parent!==el.parentElement;parent=parent.parentElement){const s=getComputedStyle(parent),b=parent.getBoundingClientRect();if((/hidden|clip/.test(s.overflowY)&&(r.top<b.top-4||r.bottom>b.bottom+4))||(/hidden|clip/.test(s.overflowX)&&(r.left<b.left-4||r.right>b.right+4))){clipped.push(n.textContent.slice(0,90));break;}}}
+    return {width:el.clientWidth,scroll:el.scrollWidth,clipped,brokenImages:[...el.querySelectorAll('img')].filter(n=>!n.complete||!n.naturalWidth).length};
+   });
+   expect(layout.clipped,`slide ${i+1} clipped text`).toEqual([]);
+   expect(layout.brokenImages).toBe(0);
    expect(layout.scroll,`slide ${i+1} horizontal overflow`).toBeLessThanOrEqual(layout.width+2);
    await page.screenshot({path:testInfo.outputPath(`${deck}-${String(i+1).padStart(2,'0')}.png`)});
   }
