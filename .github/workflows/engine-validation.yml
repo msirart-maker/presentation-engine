@@ -1,0 +1,62 @@
+name: Engine regression and browser validation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Existing regression tests
+        shell: bash
+        run: |
+          mkdir -p test-results
+          set -o pipefail
+          npm test 2>&1 | tee test-results/regression.log
+      - name: Generate showcases
+        run: npm run showcase
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regression-and-showcases
+          path: |
+            test-results/
+            QA/*report.json
+            SHOWCASE/
+  browsers:
+    needs: regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+        size: [desktop, mobile]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npm run showcase
+      - name: Browser validation
+        run: npm run test:browser -- --project=${{ matrix.browser }}-${{ matrix.size }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-${{ matrix.browser }}-${{ matrix.size }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14

@@ -1,0 +1,125 @@
+{
+  "version": "13.5.0",
+  "patterns": [
+    {
+      "id": "editorial-split",
+      "label": "Editorial split",
+      "primitive": "split",
+      "intents": [
+        "explain",
+        "overview"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "numbered-argument",
+      "label": "Numbered argument",
+      "primitive": "numbered",
+      "intents": [
+        "argument",
+        "reason"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "quote-focus",
+      "label": "Quotation with context",
+      "primitive": "quote",
+      "intents": [
+        "quote",
+        "voice"
+      ],
+      "maxItems": 3
+    },
+    {
+      "id": "statement-wall",
+      "label": "Statement wall",
+      "primitive": "statement",
+      "intents": [
+        "message",
+        "principle"
+      ],
+      "maxItems": 4
+    },
+    {
+      "id": "decision-tree",
+      "label": "Branching decision",
+      "primitive": "tree",
+      "intents": [
+        "decision",
+        "algorithm"
+      ],
+      "maxItems": 9
+    },
+    {
+      "id": "process-flow",
+      "label": "Connected process",
+      "primitive": "flow",
+      "intents": [
+        "process",
+        "mechanism"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "roadmap",
+      "label": "Phased roadmap",
+      "primitive": "roadmap",
+      "intents": [
+        "roadmap",
+        "phase"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "tradeoff-columns",
+      "label": "Trade-off columns",
+      "primitive": "columns",
+      "intents": [
+        "tradeoff",
+        "compare"
+      ],
+      "maxItems": 3
+    },
+    {
+      "id": "checklist",
+      "label": "Action checklist",
+      "primitive": "checklist",
+      "intents": [
+        "checklist",
+        "actions"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "spotlight",
+      "label": "Evidence spotlight",
+      "primitive": "spotlight",
+      "intents": [
+        "evidence",
+        "finding"
+      ],
+      "maxItems": 4
+    },
+    {
+      "id": "agenda",
+      "label": "Chapter agenda",
+      "primitive": "agenda",
+      "intents": [
+        "agenda",
+        "chapters"
+      ],
+      "maxItems": 6
+    },
+    {
+      "id": "closing-actions",
+      "label": "Closing commitments",
+      "primitive": "actions",
+      "intents": [
+        "commitment",
+        "next steps"
+      ],
+      "maxItems": 4
+    }
+  ]
+}

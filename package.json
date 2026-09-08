@@ -1,0 +1,32 @@
+{
+  "name": "v13-5-master-engine",
+  "version": "13.5.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable HTML presentation engine with content-directed compositions, motion lifecycle, and explicit verification.",
+  "scripts": {
+    "build": "node BUILDER/build.mjs",
+    "generate": "node BUILDER/generate.mjs",
+    "intake": "node BUILDER/intake.mjs",
+    "plan": "node BUILDER/plan.mjs",
+    "ui:catalog": "node BUILDER/ui-libraries.mjs list",
+    "ui:resolve": "node BUILDER/ui-libraries.mjs resolve",
+    "repair:render": "node BUILDER/repair-render.mjs",
+    "diagnose": "node ENGINE_DIAGNOSTICS/diagnose.mjs",
+    "verify": "node BUILDER/verify.mjs",
+    "learn": "node BUILDER/learn.mjs",
+    "package": "node BUILDER/repackage.mjs",
+    "test": "node QA/portable-regressions.mjs",
+    "qa": "node QA/portable-regressions.mjs",
+    "showcase": "node BUILDER/showcase.mjs",
+    "benchmark": "node BENCHMARKS/compare.mjs BENCHMARKS/provider-runs.json",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

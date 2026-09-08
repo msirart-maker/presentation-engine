@@ -1,0 +1,1 @@
+{"type":"object","required":["references"],"properties":{"kicker":{"type":"string"},"title":{"type":"string"},"subtitle":{"type":"string"},"note":{"type":"string"},"references":{"type":"array","minItems":1,"items":{"type":"object","required":["title","url"],"properties":{"number":{"type":"string"},"title":{"type":"string"},"citation":{"type":"string"},"url":{"type":"string"}}}}}}

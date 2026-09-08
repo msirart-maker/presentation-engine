@@ -1,0 +1,497 @@
+{
+  "theme": "auto",
+  "title": "Geometric composition study",
+  "design": {
+    "stylePack": "bauhaus-geometric",
+    "motion": "standard"
+  },
+  "options": {
+    "showCover": false,
+    "orientationPrompt": false,
+    "transition": "fade"
+  },
+  "assetPolicy": {
+    "offlineRequired": true
+  },
+  "slides": [
+    {
+      "id": "opening-chapter",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "title": "From evidence to action.",
+            "subtitle": "A typography-first opening with deliberate visual hierarchy.",
+            "variant": "chapter",
+            "visual": "geometry",
+            "layout": "split"
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1100,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 850,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1300,
+          "delay": 180,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 300,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1300,
+          "delay": 480,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "editorial-split",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Editorial split",
+            "subtitle": "Reusable composition • example content",
+            "pattern": "editorial-split",
+            "items": [
+              {
+                "id": "start",
+                "title": "Define the purpose",
+                "text": "Give each slide one clear job: explain, compare, decide, or act."
+              },
+              {
+                "id": "evidence",
+                "parent": "start",
+                "edge": "Evidence available",
+                "title": "Show the evidence",
+                "text": "Use a chart, sequence, or concise comparison that supports the message."
+              },
+              {
+                "id": "action",
+                "parent": "start",
+                "edge": "Decision required",
+                "title": "Make the next step clear",
+                "text": "State the action and the person responsible."
+              }
+            ]
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "statement-wall",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Statement wall",
+            "subtitle": "Reusable composition • example content",
+            "pattern": "statement-wall",
+            "items": [
+              {
+                "id": "start",
+                "title": "Define the purpose",
+                "text": "Give each slide one clear job: explain, compare, decide, or act."
+              },
+              {
+                "id": "evidence",
+                "parent": "start",
+                "edge": "Evidence available",
+                "title": "Show the evidence",
+                "text": "Use a chart, sequence, or concise comparison that supports the message."
+              },
+              {
+                "id": "action",
+                "parent": "start",
+                "edge": "Decision required",
+                "title": "Make the next step clear",
+                "text": "State the action and the person responsible."
+              }
+            ]
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "process-flow",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Connected process",
+            "subtitle": "Reusable composition • example content",
+            "pattern": "process-flow",
+            "items": [
+              {
+                "id": "start",
+                "title": "Define the purpose",
+                "text": "Give each slide one clear job: explain, compare, decide, or act."
+              },
+              {
+                "id": "evidence",
+                "parent": "start",
+                "edge": "Evidence available",
+                "title": "Show the evidence",
+                "text": "Use a chart, sequence, or concise comparison that supports the message."
+              },
+              {
+                "id": "action",
+                "parent": "start",
+                "edge": "Decision required",
+                "title": "Make the next step clear",
+                "text": "State the action and the person responsible."
+              }
+            ]
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "agenda",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Chapter agenda",
+            "subtitle": "Reusable composition • example content",
+            "pattern": "agenda",
+            "items": [
+              {
+                "id": "start",
+                "title": "Define the purpose",
+                "text": "Give each slide one clear job: explain, compare, decide, or act."
+              },
+              {
+                "id": "evidence",
+                "parent": "start",
+                "edge": "Evidence available",
+                "title": "Show the evidence",
+                "text": "Use a chart, sequence, or concise comparison that supports the message."
+              },
+              {
+                "id": "action",
+                "parent": "start",
+                "edge": "Decision required",
+                "title": "Make the next step clear",
+                "text": "State the action and the person responsible."
+              }
+            ]
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "closing-actions",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Closing commitments",
+            "subtitle": "Reusable composition • example content",
+            "pattern": "closing-actions",
+            "items": [
+              {
+                "id": "start",
+                "title": "Define the purpose",
+                "text": "Give each slide one clear job: explain, compare, decide, or act."
+              },
+              {
+                "id": "evidence",
+                "parent": "start",
+                "edge": "Evidence available",
+                "title": "Show the evidence",
+                "text": "Use a chart, sequence, or concise comparison that supports the message."
+              },
+              {
+                "id": "action",
+                "parent": "start",
+                "edge": "Decision required",
+                "title": "Make the next step clear",
+                "text": "State the action and the person responsible."
+              }
+            ]
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "closing-signature",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "title": "Clarity is the final impression.",
+            "quote": "Give the audience something useful to remember.",
+            "credit": "V13.5 composition study",
+            "variant": "signature",
+            "visual": "none"
+          },
+          "variation": "auto"
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1150,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 900,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeOut",
+          "target": "@title",
+          "duration": 140,
+          "trigger": "slideExit",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

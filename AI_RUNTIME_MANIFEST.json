@@ -1,0 +1,34 @@
+{
+  "name": "V13.5 Master Engine",
+  "version": "13.5.0",
+  "purpose": "Portable HTML presentation runtime with compositional variety and explicit verification.",
+  "aiReadOrder": [
+    "AI_INTERFACE/ENGINE_BOOTSTRAP.md",
+    "AI_INTERFACE/INTAKE_PROTOCOL.json",
+    "AI_INTERFACE/GENERATION_CONTRACT.json",
+    "AI_GUIDE/PRE_GENERATION_QUESTIONS.md"
+  ],
+  "workflow": [
+    "ask intake questions",
+    "record answers",
+    "generate",
+    "inspect receipt",
+    "repair only reported issues"
+  ],
+  "entrypoints": {
+    "intake": "node BUILDER/intake.mjs request.json --chat",
+    "generate": "node BUILDER/generate.mjs request.json presentation.html",
+    "test": "npm test",
+    "showcase": "node BUILDER/showcase.mjs",
+    "verify": "node BUILDER/verify.mjs presentation.html"
+  },
+  "defaults": {
+    "intake": "enforced",
+    "singleFileHtml": true,
+    "localAssets": "embedded",
+    "remoteAssets": "warn",
+    "generationNetwork": "denied"
+  },
+  "contextPolicy": "Read the four interface files first. Catalog lookups are selective. Do not read SHOWCASE HTML or implementation source unless inspecting or extending a failed output.",
+  "tokenClaims": "The package reports a rough text-token estimate. Code-avoidance is an estimate; actual model token savings require controlled paired runs."
+}

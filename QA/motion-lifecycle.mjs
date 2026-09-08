@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+const V10={classes:{}};
+vm.runInNewContext(fs.readFileSync(new URL('../RUNTIME/TransitionController.js',import.meta.url),'utf8'),{window:{V10Engine:V10}});
+const calls=[],makeSlide=index=>({index,offsetTop:index*800,animate(frames){calls.push(['animate',index]);return {finished:Promise.resolve(),cancel(){calls.push(['cancel',index])}}}});
+const slides=[0,1,2].map(makeSlide);let current=slides[0];
+const manager={nearest:()=>current,indexOf:slide=>slide.index,stage:{scrollTo({top}){current=slides[top/800];calls.push(['scroll',top])}}};
+const controller=new V10.classes.TransitionController({slides:manager,scroll:{activate(slide){calls.push(['active',slide.index])},onScroll(){}},animations:{reduced:false,async exit(slide){calls.push(['exit',slide.index])}},mode:'slide'});
+await controller.navigate(slides[1]);assert.equal(current,slides[1]);assert.ok(calls.find(x=>x[0]==='exit'));assert.equal(controller.busy,false);
+calls.length=0;current=slides[0];await Promise.all([controller.navigate(slides[1]),controller.navigate(slides[2])]);assert.equal(current,slides[2]);assert.equal(calls.filter(x=>x[0]==='active').length,1);
+calls.length=0;controller.animations.reduced=true;await controller.navigate(slides[0]);assert.equal(calls.filter(x=>x[0]==='animate').length,0);assert.equal(current,slides[0]);
+console.log('Motion lifecycle: exit-before-navigation, rapid cancellation and reduced-motion navigation passed.');

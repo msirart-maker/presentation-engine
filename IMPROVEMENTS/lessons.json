@@ -1,0 +1,41 @@
+{
+  "version": "13.5.0",
+  "lessons": [
+    {
+      "id": "0d2ff1ff1d9b90e8",
+      "summary": "Apply resolved intake before schema materialization",
+      "guidance": "Keep user choices in the effective brief. Apply supported answers with IntakeResolver; author narrative/depth answers as content. Do not mistake a recorded answer for implemented behavior.",
+      "domains": [
+        "all"
+      ],
+      "status": "validated",
+      "validation": {
+        "test": "QA/intake-effective.mjs",
+        "fingerprints": {
+          "QA/intake-effective.mjs": "c6e28e6cd5538d988c0b79e18cf75685149be3f747fa2519ccd66bf95512b70a",
+          "CORE/IntakeResolver.mjs": "5628259537286c0779658628e6df63f1849c2ade82f5421a94d8917ea3f11ced",
+          "CORE/GenerationPipeline.mjs": "90285c9d131ececa5d8c52946d67c5dda2268c71b58665d1ac0fee8a736bafcb",
+          "BUILDER/lib/design-resolver.mjs": "e09c4ad3209aad34d5506fafc81317c74ffbb53ef9c6c421cb1d497f239b7fc7",
+          "BUILDER/lib/palette-composer.mjs": "86fbb0bb0e7f3f823b58c8b6994c43a141ca9f1d373b1603aaeb78b4b35b87b8"
+        }
+      }
+    },
+    {
+      "id": "469fb9a4c1225049",
+      "summary": "Gauges use explicit numeric ranges",
+      "guidance": "Supply one finite gauge value. Use min/max for its scale; do not normalize its fill against the value itself.",
+      "domains": [
+        "all"
+      ],
+      "status": "validated",
+      "validation": {
+        "test": "QA/chart-semantics.mjs",
+        "fingerprints": {
+          "QA/chart-semantics.mjs": "5b73a516eac4021b8af5eedb144763ca4297c0abe7bca9a0e7191e2101c7e4f1",
+          "RUNTIME/ChartController.js": "92737f01af538581cf9e0758cf59f147f40d3e8f501a379b303b06b367011eb7",
+          "BUILDER/lib/schema-validator.mjs": "0417616327f5e1ce90aeae6dc50ff5fc3ace7c59ac2cdec6a4cb5021e99f3635"
+        }
+      }
+    }
+  ]
+}

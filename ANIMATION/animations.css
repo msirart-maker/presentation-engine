@@ -1,0 +1,5 @@
+[data-v10-animated]{will-change:transform,opacity,filter}.v10-slide.is-replay-reset [data-v10-animated]{animation:none!important;transition:none!important}.v10-counting{font-variant-numeric:tabular-nums}.v10-chart.is-drawing{pointer-events:none}
+@keyframes v10Pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+@keyframes v10Spin{to{transform:rotate(360deg)}}
+
+html[data-v13-motion="none"] *,html[data-v13-motion="none"] *::before,html[data-v13-motion="none"] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}

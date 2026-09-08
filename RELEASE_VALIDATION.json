@@ -1,0 +1,91 @@
+{
+  "version": "13.5.0",
+  "generatedAt": "2026-09-07T23:28:49.541250+00:00",
+  "staticSuite": {
+    "status": "pass",
+    "command": "node QA/portable-regressions.mjs",
+    "orchestratorChecks": 147,
+    "generationPipelineChecks": 62,
+    "chartSpecializationChecks": 7,
+    "newCoverage": [
+      "12 composition primitives through generation",
+      "gauge ranges and invalid data",
+      "motion navigation cancellation and reduced motion",
+      "effective intake",
+      "verification status",
+      "persistent tested lessons",
+      "paired usage validation"
+    ]
+  },
+  "showcases": [
+    {
+      "file": "SHOWCASE/Cinematic.html",
+      "sha256": "7eac04be5d3ed4c064c7cdde1d86483ce4ca0f1237c15e2521802b7ef96d147c"
+    },
+    {
+      "file": "SHOWCASE/Editorial.html",
+      "sha256": "f2fcbddcd998eec31c7cc4c82f7b296662a674741ab1ca52b9ab2d00ebde73a5"
+    },
+    {
+      "file": "SHOWCASE/Geometric.html",
+      "sha256": "e215607be7277d068fef5848b27b59dcfd233d3876cf589a47db935561eca492"
+    },
+    {
+      "file": "SHOWCASE/Technical.html",
+      "sha256": "d043380d6cc9661b3b7b88f692d2b25b807b392831dd22fcd0cb20a303e75d35"
+    }
+  ],
+  "browserVerification": {
+    "version": "13.5.0",
+    "status": "blocked",
+    "passed": false,
+    "artifact": {
+      "name": "Editorial.html",
+      "sha256": "f2fcbddcd998eec31c7cc4c82f7b296662a674741ab1ca52b9ab2d00ebde73a5"
+    },
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "profiles": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "name": "phone-portrait",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      {
+        "name": "phone-landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      }
+    ],
+    "runs": [],
+    "blocked": [
+      {
+        "engine": "chromium",
+        "reason": "Browser dependency or executable unavailable."
+      },
+      {
+        "engine": "firefox",
+        "reason": "Browser dependency or executable unavailable."
+      },
+      {
+        "engine": "webkit",
+        "reason": "Browser dependency or executable unavailable."
+      }
+    ],
+    "findings": [],
+    "scope": "Runtime interactions and layout measurements; no physical-device or aesthetic certification."
+  },
+  "visualReview": "not-performed; browser binaries unavailable",
+  "physicalDevices": "not-tested",
+  "measuredTokenSavings": null
+}

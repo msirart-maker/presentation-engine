@@ -1,0 +1,1 @@
+{"type": "object", "required": ["title"], "properties": {"kicker": {"type": "string"}, "title": {"type": "string"}, "quote": {"type": "string"}, "credit": {"type": "string"}, "visualLabel": {"type": "string"}, "variant": {"enum": ["statement", "quote", "signature"]}, "visual": {"enum": ["none", "orb", "geometry", "lines"]}}}

@@ -1,0 +1,14 @@
+{
+  "title":"A focused product strategy",
+  "domain":"business",
+  "slideCount":7,
+  "intake":{"status":"complete","answers":{"cover":false,"design":"swiss-editorial","motion":"minimal","palette":"#2255aa","delivery":"Standalone offline file"}},
+  "sections":[
+    {"title":"Choose the customer","summary":"Focus the initial release on a clearly defined customer group.","items":["Interview the intended users","Document the problem and current alternatives"]},
+    {"title":"Test the proposition","summary":"Use observed behavior to refine the offer.","items":["Build the smallest useful version","Compare observations with the original hypothesis"]},
+    {"title":"Sequence delivery","summary":"Assign ownership and make progress visible.","items":["Name the owner of each deliverable","Agree the first review date"]}
+  ],
+  "closing":{"title":"Decide, build, review","body":"Agree the customer, owner, and next checkpoint."},
+  "assetPolicy":{"offlineRequired":true},
+  "generation":{"renderQA":true}
+}

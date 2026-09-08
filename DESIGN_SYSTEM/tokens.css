@@ -1,0 +1,9 @@
+:root{
+  --v10-deep-1:#07131e;--v10-deep-2:#102230;--v10-deep-3:#1b3040;
+  --v10-ink:#17232d;--v10-muted:#66727c;--v10-light:#f6f2e9;--v10-card:#fffdf8;
+  --v10-ember:#b65e4a;--v10-ember-soft:#f3c9ba;--v10-teal:#2e8e83;--v10-teal-soft:#a8ddd3;
+  --v10-gold:#d6aa55;--v10-blue:#6e86a6;--v10-line:#ddd7cb;
+  --v10-display:Georgia,'Times New Roman',serif;--v10-body:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--v10-mono:'SFMono-Regular',Consolas,monospace;
+  --v10-radius:20px;--v10-vh:1vh;--v10-safe-top:max(14px,env(safe-area-inset-top));--v10-safe-right:max(14px,env(safe-area-inset-right));--v10-safe-bottom:max(14px,env(safe-area-inset-bottom));--v10-safe-left:max(14px,env(safe-area-inset-left));
+  --v10-shadow:0 18px 50px rgba(19,35,47,.12);--v10-ease:cubic-bezier(.2,.75,.2,1);--v10-slide-accent:var(--v10-ember);--v10-slide-accent-soft:var(--v10-ember-soft);--v10-density-space:1;--v10-density-type:1;
+}

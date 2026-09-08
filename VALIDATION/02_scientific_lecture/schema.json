@@ -1,0 +1,757 @@
+{
+  "title": "The five milliseconds that become a thought",
+  "description": "A data-rich scientific lecture on the neuronal action potential.",
+  "theme": "storm",
+  "options": {
+    "showCover": true,
+    "showCounter": true,
+    "showProgress": true,
+    "showNavigation": true,
+    "showReplay": true,
+    "showFullscreen": true,
+    "orientationPrompt": true,
+    "snap": "proximity"
+  },
+  "slides": [
+    {
+      "id": "neuro-01",
+      "surface": "deep",
+      "phase": "storm",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "kicker": "Validation 02 · Scientific lecture",
+            "title": "The five milliseconds that become a thought",
+            "subtitle": "How a neuron converts a threshold into a travelling electrical signal.",
+            "visualLabel": "−70 mV",
+            "particles": "storm",
+            "cta": {
+              "label": "Open the membrane",
+              "action": "next"
+            }
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1200,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 900,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "delay": 200,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-02",
+      "surface": "light",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "kicker": "Resting state",
+            "title": "The membrane begins with stored asymmetry",
+            "columns": 3,
+            "cards": [
+              {
+                "eyebrow": "Inside",
+                "title": "K⁺-weighted",
+                "value": -70,
+                "tone": "blue",
+                "text": "Typical neuronal resting potential in this teaching model."
+              },
+              {
+                "eyebrow": "Gradient",
+                "title": "Unequal ions",
+                "text": "Selective permeability converts concentration gradients into voltage.",
+                "tone": "gold"
+              },
+              {
+                "eyebrow": "Maintenance",
+                "title": "Na⁺/K⁺-ATPase",
+                "text": "Three Na⁺ out for two K⁺ in maintains the gradients.",
+                "tone": "teal"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 760,
+          "delay": 250,
+          "stagger": 105,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1450,
+          "delay": 500,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-03",
+      "surface": "dark",
+      "phase": "storm",
+      "components": [
+        {
+          "type": "Charts",
+          "data": {
+            "kicker": "The waveform",
+            "title": "Voltage changes in a fixed sequence",
+            "subtitle": "Representative neuronal action-potential values; exact values vary by cell type.",
+            "charts": [
+              {
+                "title": "Membrane potential",
+                "chartType": "line",
+                "labels": [
+                  "Rest",
+                  "Stimulus",
+                  "Threshold",
+                  "Peak",
+                  "Early fall",
+                  "Repolarize",
+                  "After-potential",
+                  "Rest"
+                ],
+                "values": [
+                  -70,
+                  -64,
+                  -55,
+                  30,
+                  12,
+                  -40,
+                  -80,
+                  -70
+                ],
+                "min": -100,
+                "max": 40,
+                "unit": " mV",
+                "colors": [
+                  "#6e86a6",
+                  "#b65e4a"
+                ],
+                "criticalIndex": 3,
+                "highlight": "Peak ≈ +30 mV"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "chartDraw",
+          "target": "[data-v10-chart]",
+          "duration": 1550,
+          "delay": 320,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-04",
+      "surface": "light",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ComparisonGrid",
+          "data": {
+            "kicker": "Two channels",
+            "title": "Fast sodium in. Slower potassium out.",
+            "columns": [
+              {
+                "eyebrow": "Depolarization",
+                "title": "Voltage-gated Na⁺",
+                "tone": "ember",
+                "text": "Rapid activation creates positive feedback.",
+                "items": [
+                  "Na⁺ influx",
+                  "Steep upstroke",
+                  "Fast inactivation"
+                ]
+              },
+              {
+                "eyebrow": "Repolarization",
+                "title": "Voltage-gated K⁺",
+                "tone": "teal",
+                "text": "Slower kinetics restore negativity.",
+                "items": [
+                  "K⁺ efflux",
+                  "Falling phase",
+                  "Brief hyperpolarization"
+                ]
+              }
+            ],
+            "conclusion": "Timing—not merely channel presence—creates the waveform."
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@comparisonColumn",
+          "duration": 780,
+          "delay": 250,
+          "stagger": 135,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-05",
+      "surface": "card",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "Timeline",
+          "data": {
+            "kicker": "Lifecycle",
+            "title": "One spike, five physiological states",
+            "items": [
+              {
+                "date": "Rest",
+                "title": "Polarized",
+                "text": "Leak conductance dominates.",
+                "tone": "blue"
+              },
+              {
+                "date": "Threshold",
+                "title": "Committed",
+                "text": "Enough Na⁺ channels activate.",
+                "metric": "≈ −55 mV",
+                "tone": "gold"
+              },
+              {
+                "date": "Upstroke",
+                "title": "Depolarized",
+                "text": "Na⁺ influx accelerates.",
+                "metric": "≈ +30 mV",
+                "tone": "ember"
+              },
+              {
+                "date": "Downstroke",
+                "title": "Repolarizing",
+                "text": "Na⁺ inactivates; K⁺ exits.",
+                "tone": "teal"
+              },
+              {
+                "date": "After",
+                "title": "Hyperpolarized",
+                "text": "K⁺ conductance closes slowly.",
+                "metric": "≈ −80 mV",
+                "tone": "blue"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@timelineItem",
+          "duration": 780,
+          "delay": 250,
+          "stagger": 115,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-06",
+      "surface": "deep",
+      "phase": "storm",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "kicker": "The decision point",
+            "title": "Threshold turns a graded input into an all-or-none event",
+            "subtitle": "Below threshold, the perturbation fades. At threshold, regenerative sodium entry takes over.",
+            "visualLabel": "−55 mV",
+            "particles": "storm"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1200,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 900,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "delay": 200,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-07",
+      "surface": "light",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "kicker": "Refractory logic",
+            "title": "The membrane remembers the spike briefly",
+            "columns": 2,
+            "cards": [
+              {
+                "eyebrow": "Absolute period",
+                "title": "No second spike",
+                "text": "Inactivated Na⁺ channels cannot immediately reopen.",
+                "tone": "ember"
+              },
+              {
+                "eyebrow": "Relative period",
+                "title": "A stronger input is required",
+                "text": "Residual K⁺ conductance keeps the membrane farther from threshold.",
+                "tone": "gold"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 760,
+          "delay": 250,
+          "stagger": 105,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1450,
+          "delay": 500,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-08",
+      "surface": "card",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ComparisonGrid",
+          "data": {
+            "kicker": "Propagation",
+            "title": "Continuous versus saltatory conduction",
+            "columns": [
+              {
+                "eyebrow": "Unmyelinated",
+                "title": "Every adjacent segment",
+                "tone": "blue",
+                "items": [
+                  "Sequential local depolarization",
+                  "More membrane exchanges ions",
+                  "Slower conduction"
+                ]
+              },
+              {
+                "eyebrow": "Myelinated",
+                "title": "Node to node",
+                "tone": "teal",
+                "items": [
+                  {
+                    "text": "Current travels beneath insulation",
+                    "state": "positive"
+                  },
+                  {
+                    "text": "Spikes regenerate at nodes of Ranvier",
+                    "state": "positive"
+                  },
+                  {
+                    "text": "Velocity may rise by more than an order of magnitude",
+                    "state": "positive"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@comparisonColumn",
+          "duration": 780,
+          "delay": 250,
+          "stagger": 135,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-09",
+      "surface": "dark",
+      "phase": "storm",
+      "components": [
+        {
+          "type": "Charts",
+          "data": {
+            "kicker": "Conceptual data",
+            "title": "Conductance opens in offset waves",
+            "subtitle": "Normalized teaching curves illustrate timing; they are not experimental measurements.",
+            "charts": [
+              {
+                "title": "Relative channel conductance",
+                "chartType": "line",
+                "labels": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5"
+                ],
+                "values": [
+                  0,
+                  100,
+                  42,
+                  12,
+                  4,
+                  0
+                ],
+                "unit": "%",
+                "colors": [
+                  "#b65e4a",
+                  "#d6aa55"
+                ],
+                "highlight": "Na⁺ early"
+              },
+              {
+                "title": "Delayed K⁺ conductance",
+                "chartType": "bar",
+                "labels": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5"
+                ],
+                "values": [
+                  0,
+                  8,
+                  45,
+                  100,
+                  62,
+                  18
+                ],
+                "unit": "%",
+                "colors": [
+                  "#6e86a6",
+                  "#6e86a6",
+                  "#2e8e83",
+                  "#2e8e83",
+                  "#2e8e83",
+                  "#a8ddd3"
+                ],
+                "highlight": "K⁺ later"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "chartDraw",
+          "target": "[data-v10-chart]",
+          "duration": 1550,
+          "delay": 320,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-10",
+      "surface": "light",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "kicker": "Why it matters",
+            "title": "The same mechanism links physiology to disease",
+            "columns": 3,
+            "cards": [
+              {
+                "eyebrow": "Channelopathy",
+                "title": "Altered gating",
+                "text": "Mutations can change excitability and firing thresholds.",
+                "tone": "ember"
+              },
+              {
+                "eyebrow": "Demyelination",
+                "title": "Lost insulation",
+                "text": "Saltatory propagation becomes unreliable or slow.",
+                "tone": "blue"
+              },
+              {
+                "eyebrow": "Pharmacology",
+                "title": "Channel blockade",
+                "text": "Many local anesthetic and antiarrhythmic effects involve voltage-gated channels.",
+                "tone": "gold"
+              }
+            ],
+            "note": "Educational overview only; not a clinical management guide."
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 760,
+          "delay": 250,
+          "stagger": 105,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1450,
+          "delay": 500,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-11",
+      "surface": "light",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ReferencePanel",
+          "data": {
+            "kicker": "Primary reading",
+            "title": "Sources for the physiology",
+            "references": [
+              {
+                "title": "Physiology, Action Potential",
+                "citation": "Grider et al. · StatPearls · NCBI Bookshelf",
+                "url": "https://www.ncbi.nlm.nih.gov/books/NBK538143/"
+              },
+              {
+                "title": "Physiology, Resting Potential",
+                "citation": "StatPearls · NCBI Bookshelf",
+                "url": "https://www.ncbi.nlm.nih.gov/books/NBK538338/"
+              },
+              {
+                "title": "Physiology, Sodium Channels",
+                "citation": "StatPearls · NCBI Bookshelf",
+                "url": "https://www.ncbi.nlm.nih.gov/books/NBK545257/"
+              },
+              {
+                "title": "Mechanisms of Neural Signaling",
+                "citation": "OpenStax · Introduction to Behavioral Neuroscience",
+                "url": "https://openstax.org/books/introduction-behavioral-neuroscience/pages/2-4-mechanisms-of-neural-signaling"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@reference",
+          "duration": 650,
+          "delay": 230,
+          "stagger": 75,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "neuro-12",
+      "surface": "calm",
+      "phase": "calm",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "kicker": "Signal complete",
+            "title": "A thought begins as a timed exchange of ions",
+            "quote": "The neuron speaks because permeability changes in the right order.",
+            "credit": "V10 scientific validation deck",
+            "visualLabel": "Impulse"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1250,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 1050,
+          "delay": 420,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 250,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "delay": 190,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+.surface-deep{background:linear-gradient(145deg,var(--v10-deep-1),var(--v10-deep-2) 56%,var(--v10-deep-3));color:#fff}
+.surface-dark{background:linear-gradient(145deg,#08151f,#102331 60%,#172c3b);color:#fff}
+.surface-light{background:linear-gradient(145deg,#fbf8f1,#f4efe5 65%,#eee8db);color:var(--v10-ink)}
+.surface-card{background:linear-gradient(145deg,#eee7db,#f8f4ec 58%,#e9e1d2);color:var(--v10-ink)}
+.surface-calm{background:linear-gradient(145deg,#0c2725,#17433e 56%,#21594f);color:#fff}
+.phase-calm::before{background:radial-gradient(circle at 86% 12%,rgba(46,142,131,.22),transparent 31%),radial-gradient(circle at 8% 86%,rgba(214,170,85,.09),transparent 29%)}
+.surface-deep .v10-kicker,.surface-dark .v10-kicker,.surface-calm .v10-kicker{color:var(--v10-slide-accent)}
+.surface-deep .v10-subtitle,.surface-dark .v10-subtitle,.surface-calm .v10-subtitle,.surface-deep .v10-body,.surface-dark .v10-body,.surface-calm .v10-body{color:rgba(255,255,255,.76)}

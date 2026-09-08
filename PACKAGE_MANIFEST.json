@@ -1,0 +1,12 @@
+{
+  "version": "13.5.0",
+  "distribution": "Active runtime, editable source, regression suite and four generated examples",
+  "capabilities": {
+    "newCompositionPrimitives": 12,
+    "openingVariants": 4,
+    "closingVariants": 3,
+    "nativeChartTypes": 16,
+    "stylePacks": 8
+  },
+  "contextPolicy": "Do not read generated showcase HTML during ordinary generation. Read bootstrap and contract first, then retrieve selected catalog entries."
+}

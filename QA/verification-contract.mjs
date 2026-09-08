@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {qualityReceipt} from '../CORE/QualityReceipt.mjs';
+const base={semantic:{passed:true,score:100},duplication:{passed:true,score:100},production:{contentReview:{valid:true,score:100},assetReview:{errors:[]}}};
+assert.equal(qualityReceipt(base).status,'structurally-validated');
+assert.equal(qualityReceipt({...base,render:{status:'blocked',passed:false}}).status,'structurally-validated');
+assert.equal(qualityReceipt({...base,render:{status:'fail',passed:false}}).status,'review');
+assert.equal(qualityReceipt({...base,render:{status:'pass',passed:true}}).status,'browser-verified');
+assert.equal(qualityReceipt({}).status,'review');
+assert.equal(qualityReceipt({...base,render:{status:'pass',passed:true}}).verification.physicalDevices.status,'not-tested');
+assert.equal(qualityReceipt({...base,production:{contentReview:{valid:false},assetReview:{errors:[]}}}).status,'review');
+console.log('Verification contract: 7 assertions passed.');

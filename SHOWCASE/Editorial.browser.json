@@ -1,0 +1,50 @@
+{
+  "version": "13.5.0",
+  "status": "blocked",
+  "passed": false,
+  "artifact": {
+    "name": "Editorial.html",
+    "sha256": "f2fcbddcd998eec31c7cc4c82f7b296662a674741ab1ca52b9ab2d00ebde73a5"
+  },
+  "engines": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "profiles": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "phone-portrait",
+      "width": 390,
+      "height": 844,
+      "touch": true
+    },
+    {
+      "name": "phone-landscape",
+      "width": 844,
+      "height": 390,
+      "touch": true
+    }
+  ],
+  "runs": [],
+  "blocked": [
+    {
+      "engine": "chromium",
+      "reason": "Browser dependency or executable unavailable."
+    },
+    {
+      "engine": "firefox",
+      "reason": "Browser dependency or executable unavailable."
+    },
+    {
+      "engine": "webkit",
+      "reason": "Browser dependency or executable unavailable."
+    }
+  ],
+  "findings": [],
+  "scope": "Runtime interactions and layout measurements; no physical-device or aesthetic certification."
+}
