@@ -32,9 +32,12 @@ for(const deck of ['Editorial','Technical','Geometric','Cinematic']){
   await page.locator('#v10-replay').click();
   await expect.poll(()=>page.evaluate(()=>window.__replayObserved)).toBeGreaterThan(0);
   await expect.poll(()=>page.evaluate(()=>window.__V10_RUNTIME__.transitions.target===null)).toBe(true);
+  const beforeRotation=await page.evaluate(()=>window.__V10_RUNTIME__.state.snapshot());
   const original=page.viewportSize();await page.setViewportSize({width:original.height,height:original.width});
   await expect.poll(()=>page.evaluate(()=>window.__V10_RUNTIME__.viewport.lastWidth)).toBe(original.height);
   await expect.poll(()=>page.evaluate(()=>!window.__V10_RUNTIME__.state.pendingLayoutAnchor&&!window.__V10_RUNTIME__.state.isTransitioning())).toBe(true);
+  const afterRotation=await page.evaluate(()=>window.__V10_RUNTIME__.state.snapshot());
+  if(afterRotation.activeSlideIndex!==count-2)console.log('Rotation diagnostic',JSON.stringify({deck,beforeRotation,afterRotation}));
   await expect.poll(()=>page.evaluate(()=>window.__V10_RUNTIME__.state.state.activeSlideIndex)).toBe(count-2);
   await expect(slides.nth(count-2)).toBeInViewport({ratio:0.4});
   await page.screenshot({path:testInfo.outputPath(`${deck}-rotated.png`)});

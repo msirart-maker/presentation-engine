@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" data-v10-snap="proximity" data-v10-density="auto" data-v10-design-mood="futuristic" data-v13-style-pack="swiss-editorial" data-v13-motion="standard" data-v13-ui-libraries="carbon">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover,interactive-widget=resizes-content"><meta name="color-scheme" content="dark light"><title>Editorial composition study</title><style>:root{
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark light"><title>Editorial composition study</title><style>:root{
   --v10-deep-1:#07131e;--v10-deep-2:#102230;--v10-deep-3:#1b3040;
   --v10-ink:#17232d;--v10-muted:#66727c;--v10-light:#f6f2e9;--v10-card:#fffdf8;
   --v10-ember:#b65e4a;--v10-ember-soft:#f3c9ba;--v10-teal:#2e8e83;--v10-teal-soft:#a8ddd3;
@@ -18,7 +18,7 @@ button,a,[role=button]{touch-action:manipulation}
 button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--v10-ember-soft);outline-offset:3px}
 img,svg,canvas{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 .v10-skip{position:fixed;left:12px;top:-70px;z-index:4000;background:#fff;color:#111;padding:10px 14px;border-radius:8px}.v10-skip:focus{top:12px}
-#v10-stage{height:100vh;height:100svh;height:calc(var(--v10-vh)*100);overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scroll-behavior:smooth;scroll-snap-type:y proximity;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
+#v10-stage{overflow-anchor:none;height:100vh;height:100svh;height:calc(var(--v10-vh)*100);overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scroll-behavior:smooth;scroll-snap-type:y proximity;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
 html[data-v10-snap=mandatory] #v10-stage{scroll-snap-type:y mandatory}html[data-v10-snap=none] #v10-stage{scroll-snap-type:none}
 .v10-slide{position:relative;isolation:isolate;width:100%;height:100vh;height:100svh;height:calc(var(--v10-vh)*100);min-height:420px;overflow:hidden;display:flex;align-items:center;padding:clamp(70px,9vh,104px) clamp(28px,7vw,112px) clamp(70px,10vh,108px);scroll-snap-align:start;scroll-snap-stop:always;touch-action:pan-y pinch-zoom;font-size:calc(1em * var(--v13-slide-type-scale,1))}
 .v10-slide::before,.v10-slide::after{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none}.v10-slide::before{background:radial-gradient(circle at 88% 12%,rgba(182,94,74,.14),transparent 28%),radial-gradient(circle at 5% 88%,rgba(214,170,85,.08),transparent 27%)}
@@ -385,7 +385,7 @@ html[data-v13-motion="none"] *,html[data-v13-motion="none"] *::before,html[data-
       this.lastWidth=metrics.width;this.lastHeight=height;this.lastOrientation=orientation;
       const layoutChanged=force||widthChanged||orientationChanged;this.state.update({viewport:{width:metrics.width,height},orientation},'viewport');this.bus.emit('viewport',{...metrics,height,orientation,profile,layoutChanged,widthChanged,orientationChanged,source});return true;
     }
-    onResize(){clearTimeout(this.timer);const next=this.metrics();if(this.isBrowserChromeResize(next))return;this.timer=setTimeout(()=>this.apply(false,'resize'),90)}
+    onResize(){clearTimeout(this.timer);const next=this.metrics();if(this.isBrowserChromeResize(next))return;this.state.pendingLayoutAnchor ||= this.state.state.anchor;this.timer=setTimeout(()=>this.apply(false,'resize'),90)}
     async stabilize({timeout=900}={}){
       let previous=this.metrics(),stable=0,start=performance.now();
       while(performance.now()-start<timeout){await V10.utils.wait(70);const next=this.metrics();if(Math.abs(next.width-previous.width)<2&&Math.abs(next.height-previous.height)<2)stable++;else stable=0;previous=next;if(stable>=2)break}
@@ -406,14 +406,20 @@ html[data-v13-motion="none"] *,html[data-v13-motion="none"] *::before,html[data-
       this.observer=new IntersectionObserver(entries=>{for(const entry of entries)this.visibility.set(entry.target,entry.intersectionRatio);let best=null,ratio=-1;for(const[slide,value]of this.visibility)if(value>ratio){ratio=value;best=slide}if(best&&ratio>0)this.activate(best,'observer')}, {root:this.stage,threshold:[0,.01,.25,.5,.75,1]});
       this.slides.slides.forEach(slide=>this.observer.observe(slide));for(const event of ['wheel','touchstart'])this.stage.addEventListener(event,()=>this.slides.transition?.cancel(),{passive:true});this.stage.addEventListener('scroll',this.onScroll,{passive:true});this.onScroll()
     }
-    activate(slide,source='scroll'){if(!slide||this.slides.transition?.busy)return this.slides.indexOf(this.currentSlide);const previous=this.currentSlide;const index=this.slides.setActive(slide);this.currentSlide=slide;if(previous!==slide)this.bus.emit('slide:change',{slide,index,previous,source});return index}
-    onScroll(){document.documentElement.classList.add('is-v10-scrolling');clearTimeout(this.scrollIdleTimer);this.scrollIdleTimer=setTimeout(()=>document.documentElement.classList.remove('is-v10-scrolling'),140);if(this.raf)return;this.raf=requestAnimationFrame(()=>{this.raf=0;const max=Math.max(1,this.stage.scrollHeight-this.stage.clientHeight),pct=Math.max(0,Math.min(1,this.stage.scrollTop/max));if(this.progress)this.progress.style.width=`${pct*100}%`;const slide=this.slides.nearest(),index=this.activate(slide,'scroll');if(this.counter)this.counter.textContent=String(index+1).padStart(2,'0');this.state.saveAnchor(this.captureAnchor())})}
+    layoutPending(){
+      const viewport=this.state.state.viewport,metrics=window.visualViewport||{width:innerWidth,height:innerHeight};
+      const orientation=metrics.width>=metrics.height?'landscape':'portrait';
+      if(Math.abs(metrics.width-viewport.width)>36||orientation!==this.state.state.orientation||(!V10.utils.isCoarse()&&Math.abs(metrics.height-viewport.height)>36))this.state.pendingLayoutAnchor ||= this.state.state.anchor;
+      return Boolean(this.state.pendingLayoutAnchor);
+    }
+    activate(slide,source='scroll'){if(!slide||this.slides.transition?.busy||(source!=='restore'&&this.layoutPending()))return this.slides.indexOf(this.currentSlide);const previous=this.currentSlide;const index=this.slides.setActive(slide);this.currentSlide=slide;if(previous!==slide)this.bus.emit('slide:change',{slide,index,previous,source});return index}
+    onScroll(){document.documentElement.classList.add('is-v10-scrolling');clearTimeout(this.scrollIdleTimer);this.scrollIdleTimer=setTimeout(()=>document.documentElement.classList.remove('is-v10-scrolling'),140);if(this.raf)return;this.raf=requestAnimationFrame(()=>{this.raf=0;if(this.layoutPending())return;const max=Math.max(1,this.stage.scrollHeight-this.stage.clientHeight),pct=Math.max(0,Math.min(1,this.stage.scrollTop/max));if(this.progress)this.progress.style.width=`${pct*100}%`;const slide=this.slides.nearest(),index=this.activate(slide,'scroll');if(this.counter)this.counter.textContent=String(index+1).padStart(2,'0');this.state.saveAnchor(this.captureAnchor())})}
     captureAnchor(){
       const slide=this.slides.nearest();if(!slide)return null;const root=this.stage.getBoundingClientRect(),rect=slide.getBoundingClientRect(),anchorY=root.top+this.stage.clientHeight*.45;
       return{slideId:slide.id,index:this.slides.indexOf(slide),offset:anchorY-rect.top,ratio:(anchorY-rect.top)/Math.max(1,rect.height)};
     }
     restoreAnchor(anchor=this.state.state.anchor){
-      if(!anchor)return;const slide=this.slides.byId(anchor.slideId)||this.slides.at(anchor.index);if(!slide)return;const root=this.stage.getBoundingClientRect(),rect=slide.getBoundingClientRect(),anchorY=root.top+this.stage.clientHeight*.45;const preserved=Number.isFinite(anchor.offset)?anchor.offset:(Number.isFinite(anchor.ratio)?anchor.ratio*rect.height:0);this.stage.scrollTo({top:Math.round(this.stage.scrollTop+rect.top-(anchorY-preserved)),behavior:'auto'});this.activate(slide,'restore');this.onScroll()
+      if(!anchor)return;const slide=this.slides.byId(anchor.slideId)||this.slides.at(anchor.index);if(!slide)return;const root=this.stage.getBoundingClientRect(),rect=slide.getBoundingClientRect(),anchorY=root.top+this.stage.clientHeight*.45;const preserved=Number.isFinite(anchor.ratio)?Math.max(0,Math.min(1,anchor.ratio))*rect.height:(Number.isFinite(anchor.offset)?Math.min(anchor.offset,rect.height*.9):0);this.stage.scrollTo({top:Math.round(this.stage.scrollTop+rect.top-(anchorY-preserved)),behavior:'instant'});this.activate(slide,'restore');this.onScroll()
     }
     suspendSnap(){document.documentElement.dataset.v10PreviousSnap=document.documentElement.dataset.v10Snap||'proximity';document.documentElement.dataset.v10Snap='none'}
     resumeSnap(){document.documentElement.dataset.v10Snap=document.documentElement.dataset.v10PreviousSnap||'proximity';delete document.documentElement.dataset.v10PreviousSnap}
@@ -643,7 +649,7 @@ html[data-v13-motion="none"] *,html[data-v13-motion="none"] *::before,html[data-
     start(){this.prompt.querySelectorAll('[data-v10-dismiss]').forEach(button=>V10.utils.bindActivation(button,()=>{this.dismissed=true;this.syncPrompt()}));window.addEventListener('orientationchange',this.onChange,{passive:true});this.bus.on('fullscreen:change',()=>{this.suppressUntil=performance.now()+1600;clearTimeout(this.timer)});this.bus.on('viewport',payload=>{this.syncPrompt();if(payload.layoutChanged&&payload.source!=='initial'&&!this.state.isTransitioning())this.schedule(payload.orientationChanged?'orientation':'reflow')});requestAnimationFrame(()=>this.syncPrompt())}
     onChange(){this.schedule('orientation')}
     schedule(kind='orientation'){if(performance.now()<this.suppressUntil)return;this.pendingKind=kind;clearTimeout(this.timer);this.timer=setTimeout(()=>this.transition(this.pendingKind),70)}
-    async transition(kind){if(this.state.isTransitioning())return;const owner='orientation';if(!this.state.beginTransition(owner))return;const anchor=this.state.state.anchor||this.scroll.captureAnchor();this.state.saveAnchor(anchor);this.scroll.suspendSnap();const work=async()=>{await this.viewport.stabilize({timeout:1100});this.scroll.restoreAnchor(anchor);this.syncPrompt()};try{if(kind==='orientation'||V10.utils.isCoarse())await this.loader.during(work,{label:kind==='orientation'?'Rotating presentation':'Adapting viewport',minimum:300});else await work()}finally{this.scroll.resumeSnap();this.state.endTransition(owner)}}
+    async transition(kind){if(this.state.isTransitioning())return;const owner='orientation';if(!this.state.beginTransition(owner))return;const anchor=this.state.pendingLayoutAnchor||this.state.state.anchor||this.scroll.captureAnchor();this.state.saveAnchor(anchor);this.scroll.suspendSnap();const work=async()=>{await this.viewport.stabilize({timeout:1100});this.scroll.restoreAnchor(anchor);this.syncPrompt()};try{if(kind==='orientation'||V10.utils.isCoarse())await this.loader.during(work,{label:kind==='orientation'?'Rotating presentation':'Adapting viewport',minimum:300});else await work()}finally{this.scroll.resumeSnap();await V10.utils.nextFrames(2);this.scroll.restoreAnchor(anchor);await V10.utils.nextFrames(2);this.state.pendingLayoutAnchor=null;this.state.endTransition(owner);this.scroll.onScroll()}}
     presentationStarted(){this.dismissed=true;this.syncPrompt()}
   }
   V10.classes.OrientationController=OrientationController;

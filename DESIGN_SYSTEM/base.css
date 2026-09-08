@@ -5,7 +5,7 @@ button,a,[role=button]{touch-action:manipulation}
 button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--v10-ember-soft);outline-offset:3px}
 img,svg,canvas{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 .v10-skip{position:fixed;left:12px;top:-70px;z-index:4000;background:#fff;color:#111;padding:10px 14px;border-radius:8px}.v10-skip:focus{top:12px}
-#v10-stage{height:100vh;height:100svh;height:calc(var(--v10-vh)*100);overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scroll-behavior:smooth;scroll-snap-type:y proximity;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
+#v10-stage{overflow-anchor:none;height:100vh;height:100svh;height:calc(var(--v10-vh)*100);overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scroll-behavior:smooth;scroll-snap-type:y proximity;-webkit-overflow-scrolling:touch;touch-action:pan-y pinch-zoom}
 html[data-v10-snap=mandatory] #v10-stage{scroll-snap-type:y mandatory}html[data-v10-snap=none] #v10-stage{scroll-snap-type:none}
 .v10-slide{position:relative;isolation:isolate;width:100%;height:100vh;height:100svh;height:calc(var(--v10-vh)*100);min-height:420px;overflow:hidden;display:flex;align-items:center;padding:clamp(70px,9vh,104px) clamp(28px,7vw,112px) clamp(70px,10vh,108px);scroll-snap-align:start;scroll-snap-stop:always;touch-action:pan-y pinch-zoom;font-size:calc(1em * var(--v13-slide-type-scale,1))}
 .v10-slide::before,.v10-slide::after{content:'';position:absolute;inset:0;z-index:-2;pointer-events:none}.v10-slide::before{background:radial-gradient(circle at 88% 12%,rgba(182,94,74,.14),transparent 28%),radial-gradient(circle at 5% 88%,rgba(214,170,85,.08),transparent 27%)}
