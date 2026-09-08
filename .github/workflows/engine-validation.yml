@@ -23,7 +23,7 @@ jobs:
           set -o pipefail
           npm test 2>&1 | tee test-results/regression.log
       - name: Generate showcases
-        run: npm run showcase && node QA/browser/fixtures.mjs
+        run: npm run showcase && node QA/browser/fixtures.mjs && node QA/browser/stress-fixtures.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -49,7 +49,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps ${{ matrix.browser }}
-      - run: npm run showcase && node QA/browser/fixtures.mjs
+      - run: npm run showcase && node QA/browser/fixtures.mjs && node QA/browser/stress-fixtures.mjs
       - name: Browser validation
         run: npm run test:browser -- --project=${{ matrix.browser }}-${{ matrix.size }}
       - uses: actions/upload-artifact@v4
