@@ -19,7 +19,8 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
     const issues=[];
     const text=[...el.querySelectorAll('h1,h2,h3,p,li,td,th,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table,details:not([open])')&&n.getClientRects().length);
     for(const n of text){
-     const r=n.getBoundingClientRect(),style=getComputedStyle(n);
+     const range=document.createRange();range.selectNodeContents(n);
+     const r=range.getBoundingClientRect(),style=getComputedStyle(n);
      if(n.matches('p,li,td,th')&&parseFloat(style.fontSize)<12)issues.push({reason:'small-text',text:n.textContent.slice(0,70),size:style.fontSize});
      for(let p=n.parentElement;p&&p!==el.parentElement;p=p.parentElement){const s=getComputedStyle(p),b=p.getBoundingClientRect();if((/hidden|clip/.test(s.overflowY)&&(r.top<b.top-4||r.bottom>b.bottom+4))||(/hidden|clip/.test(s.overflowX)&&(r.left<b.left-4||r.right>b.right+4))){issues.push({reason:'clipped',text:n.textContent.slice(0,70)});break;}}
     }
@@ -29,12 +30,19 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
    });
    measurements.push({viewport,...metrics});
    const key=`${deck}-${viewport.width}x${viewport.height}-${i+1}`;
-   await slide.screenshot({path:info.outputPath(`${key}.png`)});
+   const geometry=await slide.evaluate(el=>{const stage=document.querySelector('#v10-stage');return {top:stage.scrollTop+el.getBoundingClientRect().top-stage.getBoundingClientRect().top,height:el.offsetHeight,viewport:stage.clientHeight};});
+   const steps=Math.max(1,Math.ceil(geometry.height/geometry.viewport));
+   for(let part=0;part<steps;part++){
+    const offset=Math.min(part*geometry.viewport,Math.max(0,geometry.height-geometry.viewport));
+    await page.evaluate(top=>document.querySelector('#v10-stage').scrollTo({top,behavior:'instant'}),geometry.top+offset);
+    await page.waitForTimeout(250);
+    await page.screenshot({path:info.outputPath(`${key}-part${part+1}.png`)});
    // A small JPEG copy in the authenticated job log permits direct visual review
    // alongside the full-resolution PNG artifacts, without publishing a website.
    if(info.project.name.startsWith('chromium-')){
-    const jpeg=await slide.screenshot({type:'jpeg',quality:55});
-    console.log('VISUAL_REVIEW '+JSON.stringify({key,image:jpeg.toString('base64')}));
+    const jpeg=await page.screenshot({type:'jpeg',quality:55});
+    console.log('VISUAL_REVIEW '+JSON.stringify({key:key+'-part'+(part+1),image:jpeg.toString('base64')}));
+   }
    }
   }
  }

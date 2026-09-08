@@ -4,6 +4,10 @@
 #v10-stage .v10-component :is(h1,h2,h3,p,li,td,th,blockquote){overflow-wrap:anywhere}
 #v10-stage .v10-component :is(p,li){font-size:max(14px,1rem);line-height:1.5}
 #v10-stage .v10-credit{font-size:12px}
+#v10-stage .v10-hero-copy,#v10-stage .v10-hero-visual,#v10-stage .v10-hero-media{min-width:0;max-width:100%}
+#v10-stage .v10-hero-media{margin:0}
+#v10-stage .v10-closing blockquote{color:inherit}
+#v10-fullscreen,#v10-replay,#v10-navigation button{background:#15232e;color:#fff;border-color:rgba(255,255,255,.28)}
 #v10-stage .v13-ui-table{font-size:14px;line-height:1.5}
 #v10-stage .v13-ui-table th{font:600 13px/1.5 var(--v10-body);letter-spacing:0;text-transform:none}
 #v10-stage .v13-ui-table tbody th{font-size:14px}
