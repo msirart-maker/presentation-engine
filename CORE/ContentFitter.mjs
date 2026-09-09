@@ -13,7 +13,7 @@ export class ContentFitter{
     if(words(slide.components)>180)report.warnings.push({slideId:slide.id,reason:'Requires editorial review; linked or unsupported content was preserved'});
     return [slide];
    }
-   if((slide.animations||[]).some(a=>!a.target?.startsWith('@'))){report.warnings.push({slideId:slide.id,reason:'Custom animation selectors require manual pagination'});return [slide];}
+   if((slide.animations||[]).some(a=>!a.target?.startsWith('@')&&!['[data-v10-count]','[data-v10-chart]'].includes(a.target))){report.warnings.push({slideId:slide.id,reason:'Custom animation selectors require manual pagination'});return [slide];}
    const [key,limit]=spec,groups=[];let group=[],load=words(c.data.title)+words(c.data.subtitle);
    for(const item of c.data[key]){
     const size=words(item);

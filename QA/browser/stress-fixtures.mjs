@@ -40,6 +40,7 @@ for(const [name,stylePack,slides] of decks){
  const schema={theme:'auto',title:name,design:{stylePack},options:{showCover:false,orientationPrompt:false,contentFit:name==='StressFitting'?'split':'preserve'},assetPolicy:{offlineRequired:true},slides};
  await fs.mkdir('SHOWCASE',{recursive:true});
  await fs.writeFile(`SHOWCASE/${name}.schema.json`,JSON.stringify(schema,null,2)+'\n');
- await buildPresentationData(schema,process.cwd(),path.resolve(`SHOWCASE/${name}.html`));
- console.log(`${name}: ${slides.length} stress slides`);
+ const built=await buildPresentationData(schema,process.cwd(),path.resolve(`SHOWCASE/${name}.html`));
+ if(name==='StressFitting'&&built.slides<=slides.length)throw new Error('Pagination fixture did not create continuation slides');
+ console.log(`${name}: ${built.slides} stress slides`);
 }
