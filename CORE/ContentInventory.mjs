@@ -44,9 +44,10 @@ export class ContentInventory{
       const points=array(section.items||section.bullets||section.points).map(item);
       const pointUnits=points.map((point,index)=>addUnit(`${sectionId}-point-${index+1}`,{kind:'point',sectionId,title:point.title,text:point.text,priority:point.priority||section.priority||'primary',reusePolicy:point.reusePolicy||'once',source:point.source||section.source||'request',payload:point}));
       const image=section.image||null,chart=section.chart||null,comparison=section.comparison||null,uiRecipe=section.uiRecipe||null;
-      const first=section.composition?pointUnits:pointUnits.slice(0,2);
+      const linked=points.some(point=>point.parent);
+      const first=section.composition||linked?pointUnits:pointUnits.slice(0,2);
       addBlock(`${sectionId}-premise`,{kind:uiRecipe?'ui-recipe':'section',sectionId,title:sectionTitle,summary,items:first.map(unit=>({...unit.payload,title:unit.title,text:unit.text})),image,chart,comparison,uiRecipe,composition:section.composition,intent:section.intent,sourceUnitIds:[summaryUnit.id,...first.map(unit=>unit.id)],priority:summaryUnit.priority,reusePolicy:summaryUnit.reusePolicy});
-      for(let index=section.composition?pointUnits.length:2;index<pointUnits.length;index+=2){
+      for(let index=section.composition||linked?pointUnits.length:2;index<pointUnits.length;index+=2){
         const group=pointUnits.slice(index,index+2),lead=group[0];
         addBlock(`${sectionId}-detail-${index/2}`,{kind:'section-detail',intent:section.intent,sectionId,title:lead.title||`${sectionTitle}: Detail`,summary:lead.text,items:group.map(unit=>({...unit.payload,title:unit.title,text:unit.text})),sourceUnitIds:group.map(unit=>unit.id),priority:lead.priority,reusePolicy:lead.reusePolicy});
       }

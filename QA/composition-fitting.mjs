@@ -14,6 +14,10 @@ assert.equal(selectComposition({kind:'opening',intent:'evidence',items:points}),
 assert.equal(selectComposition({intent:'compare',items:Array.from({length:4},()=>({title:'Side'}))}),null);
 const inventory=new ContentInventory().build({title:'Example',sections:[{title:'Result',intent:'evidence',items:points}]});
 assert.equal(inventory.blocks.find(b=>b.kind==='section').intent,'evidence');
+const branching=new ContentInventory().build({title:'Decision',sections:[{title:'Choose',intent:'decision',items:[{id:'root',title:'Assess'},{id:'yes',parent:'root',title:'Yes'},{id:'no',parent:'root',title:'No'}]}]});
+const branch=branching.blocks.find(b=>b.kind==='section');
+assert.equal(branch.items.length,3);
+assert.equal(selectComposition(branch),'decision-tree');
 const cards=Array.from({length:10},(_,i)=>({title:'Unique '+i,text:'All original text '+i,detail:'Detail '+i}));
 const source={title:'Fit',theme:'auto',slides:[{id:'dense',components:[{id:'cards',type:'GlassCard',data:{title:'Dense',cards,note:'Final note'}}],animations:[]},{id:'dense-part-2',components:[{type:'ClosingScene',data:{title:'Close'}}]}]};
 const before=JSON.stringify(source),fit=new ContentFitter(),result=fit.apply(source,{mode:'split'});
