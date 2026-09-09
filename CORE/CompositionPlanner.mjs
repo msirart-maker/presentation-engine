@@ -44,8 +44,9 @@ function layoutFor(primary,secondary,grammar,index){
 export class CompositionPlanner{
   plan(plan,allocationResult){
     const grammar=grammarFor(plan.domain);
+    let previousPattern=null;
     const compositions=allocationResult.allocations.map((allocation,index)=>{
-      const block=allocation.block,pattern=selectComposition(block);if(pattern)block.uiRecipe={...(block.uiRecipe||{}),pattern,items:block.items};const primary=pattern?'UIRecipe':genericPrimary(block,index,grammar),secondary=pattern?null:secondaryFor(block,primary,grammar,index),layout=layoutFor(primary,secondary,grammar,index);
+      const block=allocation.block,pattern=selectComposition(block,{previousPattern});previousPattern=pattern;if(pattern)block.uiRecipe={...(block.uiRecipe||{}),pattern,items:block.items};const primary=pattern?'UIRecipe':genericPrimary(block,index,grammar),secondary=pattern?null:secondaryFor(block,primary,grammar,index),layout=layoutFor(primary,secondary,grammar,index);
       return {index,blockId:block.id,grammar:grammar.id,layout,primary,secondary,pattern,signature:pattern?`UIRecipe:${pattern}`:secondary?`${primary}+${secondary}`:primary,reason:`${grammar.id}: ${block.kind} content mapped to ${primary}${secondary?` with ${secondary} support`:''}`};
     });
     return {version:'13.5.0',domain:plan.domain,grammar:grammar.id,compositions};

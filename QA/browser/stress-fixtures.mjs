@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {buildPresentationData} from '../../BUILDER/build.mjs';
 import {AnimationAdvisor} from '../../CORE/AnimationAdvisor.mjs';
+import {selectComposition} from '../../COMPOSITIONS/registry.mjs';
 const advisor=new AnimationAdvisor();
 const slide=(id,type,data)=>({id,phase:'neutral',components:[{type,data}],animations:advisor.forComponent(type)});
 const disclaimer='Synthetic layout fixture — not clinical guidance or real-world evidence.';
@@ -28,8 +29,15 @@ const decks=[
   slide('image-close','ClosingScene',{title:'Make space for the story',quote:'The frame supports the message.',credit:disclaimer,visual:'none'})
  ]]
 ];
+const fitItems=Array.from({length:9},(_,i)=>({...items[i%items.length],title:'Checkpoint '+(i+1)}));
+decks.push(['StressFitting','scientific-technical',[
+ slide('fit-cards','GlassCard',{title:'Keep every checkpoint readable',columns:3,cards:fitItems}),
+ slide('fit-table','UIRecipe',{title:'Preserve every table row',pattern:'data-table',headers:['Checkpoint','Detail'],rows:fitItems.map(item=>[item.title,item.text])}),
+ ...['evidence','process'].map(intent=>slide('fit-'+intent,'UIRecipe',{title:'The message determines the composition',pattern:selectComposition({intent,items:items.slice(0,3)}),items:items.slice(0,3)})),
+ slide('fit-close','ClosingScene',{title:'Every detail retained',visual:'none'})
+]]);
 for(const [name,stylePack,slides] of decks){
- const schema={theme:'auto',title:name,design:{stylePack},options:{showCover:false,orientationPrompt:false},assetPolicy:{offlineRequired:true},slides};
+ const schema={theme:'auto',title:name,design:{stylePack},options:{showCover:false,orientationPrompt:false,contentFit:name==='StressFitting'?'split':'preserve'},assetPolicy:{offlineRequired:true},slides};
  await fs.mkdir('SHOWCASE',{recursive:true});
  await fs.writeFile(`SHOWCASE/${name}.schema.json`,JSON.stringify(schema,null,2)+'\n');
  await buildPresentationData(schema,process.cwd(),path.resolve(`SHOWCASE/${name}.html`));

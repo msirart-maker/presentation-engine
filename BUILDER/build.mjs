@@ -12,6 +12,7 @@ import {PresentationDirector} from '../CORE/PresentationDirector.mjs';
 import {ContentValidator} from '../CORE/ContentValidator.mjs';
 import {TypographyEngine} from '../CORE/TypographyEngine.mjs';
 import {ResponsiveLayoutResolver} from '../CORE/ResponsiveLayoutResolver.mjs';
+import {ContentFitter} from '../CORE/ContentFitter.mjs';
 import {UILibraryResolver} from '../CORE/UILibraryResolver.mjs';
 import {bundleUILibraries} from './lib/ui-library-bundle.mjs';
 
@@ -29,6 +30,8 @@ function assetCss(prepared){
 
 export async function buildPresentationData(inputSchema,baseDir,outputPath,buildOptions={}){
   let schema=typeof structuredClone==='function'?structuredClone(inputSchema):JSON.parse(JSON.stringify(inputSchema));
+  const fitting=new ContentFitter().apply(schema,{mode:buildOptions.contentFit||schema.options?.contentFit||'preserve'});
+  schema=fitting.schema;
   const director=new PresentationDirector();
   schema=director.plan(schema,{plan:buildOptions.plan});
   const initialReview=director.critique(schema);
@@ -69,6 +72,7 @@ export async function buildPresentationData(inputSchema,baseDir,outputPath,build
 <script id="v11-production-plan" type="application/json">${jsonForHtml(productionPlan||{})}</script>
 <script id="v11-intelligence-review" type="application/json">${jsonForHtml(intelligenceReview||{})}</script>
 <script id="v13-content-review" type="application/json">${jsonForHtml(contentReview||{})}</script>
+<script id="v13-content-fit" type="application/json">${jsonForHtml(fitting.report)}</script>
 <script id="v13-asset-registry" type="application/json">${jsonForHtml(prepared.__assetRegistry||[])}</script>
 <script id="v13-asset-review" type="application/json">${jsonForHtml(prepared.__assetReview||{})}</script>
 <script id="v13-responsive-plan" type="application/json">${jsonForHtml(prepared.__responsive||{})}</script>
@@ -82,7 +86,7 @@ export async function buildPresentationData(inputSchema,baseDir,outputPath,build
   await fs.mkdir(path.dirname(absoluteOutput),{recursive:true});
   await fs.writeFile(absoluteOutput,html);
   const embeddedAssetBytes=[...html.matchAll(/data:[^;\s"']+;base64,[A-Za-z0-9+/=]+/g)].reduce((sum,match)=>sum+Buffer.byteLength(match[0]),0);
-  return {embeddedAssetBytes,output:absoluteOutput,slides:prepared.slides.length,bytes:Buffer.byteLength(html),plan:productionPlan,review:intelligenceReview,contentReview,assetReview:prepared.__assetReview||{},responsivePlan:prepared.__responsive||{},design:prepared.__design||{},uiLibraryReview:{...uiResolution.review,vendorWarnings:uiBundle.warnings,thirdPartyCodeImported:uiBundle.thirdPartyCodeImported}};
+  return {embeddedAssetBytes,output:absoluteOutput,slides:prepared.slides.length,bytes:Buffer.byteLength(html),plan:productionPlan,review:intelligenceReview,contentReview,contentFit:fitting.report,assetReview:prepared.__assetReview||{},responsivePlan:prepared.__responsive||{},design:prepared.__design||{},uiLibraryReview:{...uiResolution.review,vendorWarnings:uiBundle.warnings,thirdPartyCodeImported:uiBundle.thirdPartyCodeImported}};
 }
 
 export async function buildPresentation(inputPath,outputPath,buildOptions={}){

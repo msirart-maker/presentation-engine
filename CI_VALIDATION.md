@@ -30,7 +30,7 @@ A passing run supports only the tested generated presentations, browser versions
 
 ## Visual stress coverage
 
-The matrix includes three deterministic stress decks (13 slides): dense fictional clinical-style workflows and tables, long chart labels and paired charts, and embedded image crop targets with varied aspect ratios. All data is synthetic, not medical guidance or real-world evidence. Each project runs nine tests (54 across the matrix). Stress decks exercise both 1440 × 900 and 900 × 1440 in desktop projects, and both 390 × 844 and 844 × 390 in mobile projects.
+The matrix includes three layout stress decks (13 slides) plus StressFitting, which exercises semantic layouts and automatic pagination. Fixtures cover dense fictional clinical-style workflows and tables, long chart labels and paired charts, and embedded image crop targets with varied aspect ratios. All data is synthetic, not medical guidance or real-world evidence. Each project runs ten tests (60 across the matrix). Stress decks exercise both 1440 × 900 and 900 × 1440 in desktop projects, and both 390 × 844 and 844 × 390 in mobile projects.
 
 Stress assertions check text glyph clipping, minimum body/table font sizes, horizontal overflow, image loading, navigation, and uncaught browser errors. Tall slides are captured in overlapping viewport-sized scroll sections; screenshots do not temporarily enlarge the browser viewport. PNGs and layout measurements are stored with the reports. Chromium jobs also include small JPEG copies in authenticated job logs for visual inspection; no public website is published.
 

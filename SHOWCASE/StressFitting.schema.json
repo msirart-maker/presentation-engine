@@ -1,0 +1,351 @@
+{
+  "theme": "auto",
+  "title": "StressFitting",
+  "design": {
+    "stylePack": "scientific-technical"
+  },
+  "options": {
+    "showCover": false,
+    "orientationPrompt": false,
+    "contentFit": "split"
+  },
+  "assetPolicy": {
+    "offlineRequired": true
+  },
+  "slides": [
+    {
+      "id": "fit-cards",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "title": "Keep every checkpoint readable",
+            "columns": 3,
+            "cards": [
+              {
+                "title": "Checkpoint 1",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 1"
+              },
+              {
+                "title": "Checkpoint 2",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 2"
+              },
+              {
+                "title": "Checkpoint 3",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 3"
+              },
+              {
+                "title": "Checkpoint 4",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 4"
+              },
+              {
+                "title": "Checkpoint 5",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 5"
+              },
+              {
+                "title": "Checkpoint 6",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 6"
+              },
+              {
+                "title": "Checkpoint 7",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 1"
+              },
+              {
+                "title": "Checkpoint 8",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 2"
+              },
+              {
+                "title": "Checkpoint 9",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 3"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 700,
+          "delay": 220,
+          "stagger": 90,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1250,
+          "delay": 420,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "fit-table",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Preserve every table row",
+            "pattern": "data-table",
+            "headers": [
+              "Checkpoint",
+              "Detail"
+            ],
+            "rows": [
+              [
+                "Checkpoint 1",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 2",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 3",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 4",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 5",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 6",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 7",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 8",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Checkpoint 9",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ]
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "fit-evidence",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "The message determines the composition",
+            "pattern": "spotlight",
+            "items": [
+              {
+                "title": "Initial assessment and prioritisation",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 1"
+              },
+              {
+                "title": "Review laboratory and bedside findings",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 2"
+              },
+              {
+                "title": "Confirm the documented decision",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 3"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "fit-process",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "The message determines the composition",
+            "pattern": "process-flow",
+            "items": [
+              {
+                "title": "Initial assessment and prioritisation",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 1"
+              },
+              {
+                "title": "Review laboratory and bedside findings",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 2"
+              },
+              {
+                "title": "Confirm the documented decision",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 3"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "fit-close",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "title": "Every detail retained",
+            "visual": "none"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1150,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 900,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

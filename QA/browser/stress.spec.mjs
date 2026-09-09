@@ -1,10 +1,16 @@
 import {test,expect} from '@playwright/test';
-for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}: readable content in both orientations`,async({page},info)=>{
+for(const deck of ['StressClinical','StressCharts','StressImages','StressFitting'])test(`${deck}: readable content in both orientations`,async({page},info)=>{
  test.setTimeout(180000);
  const errors=[],measurements=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`/${deck}.html`);
  await page.waitForFunction(()=>window.__V10_RUNTIME__?.state.state.started);
+ if(deck==='StressFitting'){
+  const proof=await page.evaluate(()=>({schema:JSON.parse(document.querySelector('#v10-schema').textContent),fit:JSON.parse(document.querySelector('#v13-content-fit').textContent)}));
+  expect(proof.fit.outputSlides).toBeGreaterThan(proof.fit.originalSlides);
+  expect(proof.schema.slides.flatMap(s=>s.components.flatMap(c=>c.data.cards||[])).map(c=>c.title)).toEqual(Array.from({length:9},(_,i)=>'Checkpoint '+(i+1)));
+  expect(proof.schema.slides.flatMap(s=>s.components.flatMap(c=>c.data.rows||[])).map(row=>row[0])).toEqual(Array.from({length:9},(_,i)=>'Checkpoint '+(i+1)));
+ }
  const initial=page.viewportSize();
  for(const viewport of [initial,{width:initial.height,height:initial.width}]){
   await page.setViewportSize(viewport);

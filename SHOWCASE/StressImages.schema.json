@@ -6,7 +6,8 @@
   },
   "options": {
     "showCover": false,
-    "orientationPrompt": false
+    "orientationPrompt": false,
+    "contentFit": "preserve"
   },
   "assetPolicy": {
     "offlineRequired": true
