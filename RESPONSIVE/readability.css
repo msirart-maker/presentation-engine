@@ -39,3 +39,6 @@
  #v10-stage .v13-ui-table th,#v10-stage .v13-ui-table td{padding:10px;font-size:13px}
  #v10-stage .v10-chart-wrap{min-height:260px}
 }
+@media(max-width:720px),(max-height:520px){
+ #v10-stage .v10-slide{padding-top:72px;padding-bottom:120px}
+}
