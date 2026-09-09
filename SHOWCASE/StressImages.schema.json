@@ -1,0 +1,229 @@
+{
+  "theme": "auto",
+  "title": "StressImages",
+  "design": {
+    "stylePack": "cinematic-glass"
+  },
+  "options": {
+    "showCover": false,
+    "orientationPrompt": false
+  },
+  "assetPolicy": {
+    "offlineRequired": true
+  },
+  "slides": [
+    {
+      "id": "image-opening",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "title": "A different frame for every story",
+            "subtitle": "Deterministic crop targets, not editorial photography.",
+            "image": {
+              "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDEyMDAgODAwIj48cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9IiMyODViNzAiLz48cGF0aCBkPSJNMCAwTDEyMDAgODAwTTEyMDAgMEwwIDgwMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHJlY3QgeD0iMzAwIiB5PSIyMDAiIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSI2MDAiIHk9IjQwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iNDAiPjEyMDAgw5cgODAwPC90ZXh0Pjwvc3ZnPg==",
+              "alt": "Landscape crop target",
+              "title": "Landscape composition"
+            },
+            "layout": "split"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1100,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 850,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1300,
+          "delay": 180,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 300,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1300,
+          "delay": 480,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "mixed-images",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ImageStoryCard",
+          "data": {
+            "title": "Mixed aspect ratios",
+            "subtitle": "Portrait, landscape and square sources must share a stable layout.",
+            "images": [
+              {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMTAwMCIgdmlld0JveD0iMCAwIDYwMCAxMDAwIj48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9IiM3MTQyNGEiLz48cGF0aCBkPSJNMCAwTDYwMCAxMDAwTTYwMCAwTDAgMTAwMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHJlY3QgeD0iMTUwIiB5PSIyNTAiIHdpZHRoPSIzMDAiIGhlaWdodD0iNTAwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSIzMDAiIHk9IjUwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iNDAiPjYwMCDDlyAxMDAwPC90ZXh0Pjwvc3ZnPg==",
+                "alt": "Portrait crop target",
+                "title": "Portrait frame",
+                "caption": "A tall source with a deliberately extended caption to test its relationship with the image and neighbouring cards."
+              },
+              {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDEyMDAgNjAwIj48cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiMyODViNzAiLz48cGF0aCBkPSJNMCAwTDEyMDAgNjAwTTEyMDAgMEwwIDYwMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHJlY3QgeD0iMzAwIiB5PSIxNTAiIHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSI2MDAiIHk9IjMwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iNDAiPjEyMDAgw5cgNjAwPC90ZXh0Pjwvc3ZnPg==",
+                "alt": "Panoramic crop target",
+                "title": "Wide frame",
+                "caption": "A panoramic source should crop predictably without distorting the frame."
+              },
+              {
+                "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIiB2aWV3Qm94PSIwIDAgODAwIDgwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9IiM1MzY3NDgiLz48cGF0aCBkPSJNMCAwTDgwMCA4MDBNODAwIDBMMCA4MDAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iOCIvPjxyZWN0IHg9IjIwMCIgeT0iMjAwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHRleHQgeD0iNDAwIiB5PSI0MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjQwIj44MDAgw5cgODAwPC90ZXh0Pjwvc3ZnPg==",
+                "alt": "Square crop target",
+                "title": "Square frame",
+                "caption": "A square source completes the comparison."
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@imageCard",
+          "duration": 760,
+          "delay": 220,
+          "stagger": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "image-copy",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "title": "The image and the message must work together",
+            "columns": 2,
+            "cards": [
+              {
+                "title": "Protect the subject",
+                "text": "The visible crop should retain the subject, while the title and caption remain legible without hiding essential detail."
+              },
+              {
+                "title": "Protect the reading order",
+                "text": "On a narrow screen the image, heading and supporting text should form a coherent sequence rather than a compressed desktop composition."
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 700,
+          "delay": 220,
+          "stagger": 90,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1250,
+          "delay": 420,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "image-close",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "title": "Make space for the story",
+            "quote": "The frame supports the message.",
+            "credit": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "visual": "none"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1150,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 900,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "theme": "auto",
+  "title": "StressClinical",
+  "design": {
+    "stylePack": "scientific-technical"
+  },
+  "options": {
+    "showCover": false,
+    "orientationPrompt": false
+  },
+  "assetPolicy": {
+    "offlineRequired": true
+  },
+  "slides": [
+    {
+      "id": "long-opening",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "title": "From a complex presentation to a clear and coordinated inpatient plan",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "visual": "none",
+            "variant": "editorial"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1100,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 850,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1300,
+          "delay": 180,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 300,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1300,
+          "delay": 480,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "dense-workflow",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "title": "Six checkpoints for the fictional pathway",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "columns": 3,
+            "cards": [
+              {
+                "title": "Initial assessment and prioritisation",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 1"
+              },
+              {
+                "title": "Review laboratory and bedside findings",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 2"
+              },
+              {
+                "title": "Confirm the documented decision",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 3"
+              },
+              {
+                "title": "Arrange the next reassessment",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 4"
+              },
+              {
+                "title": "Communicate responsibilities clearly",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 5"
+              },
+              {
+                "title": "Record the escalation pathway",
+                "text": "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail.",
+                "label": "Step 6"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 700,
+          "delay": 220,
+          "stagger": 90,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1250,
+          "delay": 420,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "long-table",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "UIRecipe",
+          "data": {
+            "title": "Responsibilities at each transition",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "pattern": "data-table",
+            "headers": [
+              "Checkpoint",
+              "Responsible role",
+              "Documentation and follow-up"
+            ],
+            "rows": [
+              [
+                "Initial assessment and prioritisation",
+                "Fictional role 1",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Review laboratory and bedside findings",
+                "Fictional role 2",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Confirm the documented decision",
+                "Fictional role 3",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Arrange the next reassessment",
+                "Fictional role 4",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Communicate responsibilities clearly",
+                "Fictional role 5",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ],
+              [
+                "Record the escalation pathway",
+                "Fictional role 6",
+                "This fictional workflow contains deliberately extended explanatory text to test readable wrapping, spacing, and hierarchy when a presentation carries practical detail."
+              ]
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@uiItem",
+          "duration": 680,
+          "delay": 180,
+          "stagger": 80,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1100,
+          "delay": 350,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "long-identifier",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "GlassCard",
+          "data": {
+            "title": "Record the unbroken identifier",
+            "columns": 2,
+            "cards": [
+              {
+                "title": "Reference",
+                "text": "SYNTHETIC_REFERENCE_IDENTIFIER_ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+              },
+              {
+                "title": "Interpretation",
+                "text": "An intentionally long unbroken token must wrap without escaping its card or compressing adjacent content."
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "stagger",
+          "target": "@card",
+          "duration": 700,
+          "delay": 220,
+          "stagger": 90,
+          "effect": "fadeUp",
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1250,
+          "delay": 420,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "clinical-close",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "title": "Detail without losing the message",
+            "quote": "Readable hierarchy matters most when the content becomes complex.",
+            "credit": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "visual": "none"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1150,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 900,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

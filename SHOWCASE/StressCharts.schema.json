@@ -1,0 +1,278 @@
+{
+  "theme": "auto",
+  "title": "StressCharts",
+  "design": {
+    "stylePack": "swiss-editorial"
+  },
+  "options": {
+    "showCover": false,
+    "orientationPrompt": false
+  },
+  "assetPolicy": {
+    "offlineRequired": true
+  },
+  "slides": [
+    {
+      "id": "chart-opening",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "HeroScene",
+          "data": {
+            "title": "The shape of uneven evidence",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "visual": "none",
+            "variant": "poster"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "heroSequence",
+          "target": "@title",
+          "duration": 1100,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@subtitle",
+          "duration": 850,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1300,
+          "delay": 180,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 300,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "countUp",
+          "target": "[data-v10-count]",
+          "duration": 1300,
+          "delay": 480,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "category-chart",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "Charts",
+          "data": {
+            "title": "Long categories and uneven values",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "charts": [
+              {
+                "title": "Fictional departmental throughput",
+                "chartType": "bar",
+                "labels": [
+                  "Acute medical assessment",
+                  "Emergency observation unit",
+                  "Specialist inpatient review",
+                  "Complex discharge planning",
+                  "Ambulatory follow-up"
+                ],
+                "values": [
+                  4,
+                  97,
+                  31,
+                  68,
+                  12
+                ],
+                "unit": "cases"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "chartDraw",
+          "target": "[data-v10-chart]",
+          "duration": 1450,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "paired-charts",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "Charts",
+          "data": {
+            "title": "Two views of the same fictional service",
+            "subtitle": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "charts": [
+              {
+                "title": "Demand over twelve periods",
+                "chartType": "line",
+                "labels": [
+                  "Period 1",
+                  "Period 2",
+                  "Period 3",
+                  "Period 4",
+                  "Period 5",
+                  "Period 6",
+                  "Period 7",
+                  "Period 8",
+                  "Period 9",
+                  "Period 10",
+                  "Period 11",
+                  "Period 12"
+                ],
+                "series": [
+                  {
+                    "name": "Planned demand",
+                    "values": [
+                      20,
+                      31,
+                      18,
+                      42,
+                      30,
+                      48,
+                      66,
+                      43,
+                      52,
+                      71,
+                      62,
+                      90
+                    ]
+                  },
+                  {
+                    "name": "Observed demand",
+                    "values": [
+                      15,
+                      38,
+                      24,
+                      32,
+                      54,
+                      41,
+                      49,
+                      58,
+                      71,
+                      62,
+                      88,
+                      74
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "Distribution of work",
+                "chartType": "donut",
+                "labels": [
+                  "Assessment",
+                  "Follow-up",
+                  "Coordination",
+                  "Documentation"
+                ],
+                "values": [
+                  45,
+                  25,
+                  20,
+                  10
+                ],
+                "centerLabel": "100%"
+              }
+            ]
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "fadeUp",
+          "target": "@title",
+          "duration": 850,
+          "delay": 80,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "chartDraw",
+          "target": "[data-v10-chart]",
+          "duration": 1450,
+          "delay": 280,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    },
+    {
+      "id": "chart-close",
+      "phase": "neutral",
+      "components": [
+        {
+          "type": "ClosingScene",
+          "data": {
+            "title": "Labels are part of the evidence",
+            "quote": "A chart is only useful when its categories, scales and context can be read.",
+            "credit": "Synthetic layout fixture — not clinical guidance or real-world evidence.",
+            "visual": "none"
+          }
+        }
+      ],
+      "animations": [
+        {
+          "type": "chapterTransition",
+          "target": "@title",
+          "duration": 1150,
+          "delay": 100,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "fadeUp",
+          "target": "@quote",
+          "duration": 900,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "scale",
+          "target": "@heroVisual",
+          "duration": 1400,
+          "delay": 240,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        },
+        {
+          "type": "particles",
+          "target": "@heroVisual",
+          "duration": 0,
+          "delay": 340,
+          "trigger": "slideEnter",
+          "reset": "slideExit"
+        }
+      ]
+    }
+  ]
+}

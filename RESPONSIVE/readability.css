@@ -21,6 +21,9 @@
 #v10-stage .v13-chart-data[open]{max-height:240px;overflow:auto}
 #v10-stage .v10-chart-wrap{min-width:0;max-width:100%}
 #v10-stage .v10-chart-wrap canvas{max-width:100%}
+@media(max-width:720px) and (orientation:portrait){
+ #v10-stage .v10-component-shell .v10-hero,#v10-stage .v10-component-shell .v10-closing{grid-template-columns:minmax(0,1fr)}
+}
 @media(max-width:1100px),(max-height:650px){
  #v10-stage .v10-slide{height:auto;min-height:calc(var(--v10-vh)*100);overflow:visible}
  #v10-stage .v10-component :is(p,li){font-size:14px}

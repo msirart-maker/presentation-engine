@@ -25,7 +25,15 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
      for(let p=n.parentElement;p&&p!==el.parentElement;p=p.parentElement){const s=getComputedStyle(p),b=p.getBoundingClientRect();if((/hidden|clip/.test(s.overflowY)&&(r.top<b.top-4||r.bottom>b.bottom+4))||(/hidden|clip/.test(s.overflowX)&&(r.left<b.left-4||r.right>b.right+4))){issues.push({reason:'clipped',text:n.textContent.slice(0,70)});break;}}
     }
     if(el.scrollWidth>el.clientWidth+3)issues.push({reason:'horizontal-overflow',pixels:el.scrollWidth-el.clientWidth});
-    for(const img of el.querySelectorAll('img'))if(!img.complete||!img.naturalWidth)issues.push({reason:'broken-image'});
+    for(const img of el.querySelectorAll('img')){
+     if(!img.complete||!img.naturalWidth)issues.push({reason:'broken-image'});
+     const b=img.getBoundingClientRect();
+     if(b.width<80||b.height<80)issues.push({reason:'collapsed-image',alt:img.alt,width:b.width,height:b.height});
+     for(let p=img;p&&p!==el.parentElement;p=p.parentElement){
+      const s=getComputedStyle(p);
+      if(s.display==='none'||s.visibility==='hidden'||Number(s.opacity)<.1){issues.push({reason:'hidden-image',alt:img.alt});break;}
+     }
+    }
     return {id:el.id,issues};
    });
    measurements.push({viewport,...metrics});
