@@ -21,7 +21,16 @@
 #v10-stage .v13-chart-data[open]{max-height:240px;overflow:auto}
 #v10-stage .v10-chart-wrap{min-width:0;max-width:100%}
 #v10-stage .v10-chart-wrap canvas{max-width:100%}
+.v135-table-cards{display:none}
 @media(max-width:720px) and (orientation:portrait){
+ #v10-stage .v13-ui-table{display:none}
+ #v10-stage .v135-table-cards{display:grid;gap:12px}
+ #v10-stage .v135-table-cards article{padding:18px;background:var(--v10-card,#fff);border:1px solid var(--v10-line);border-radius:8px}
+ #v10-stage .v135-table-cards h3{font-size:18px;line-height:1.3}
+ #v10-stage .v135-table-cards dl{margin-top:14px}
+ #v10-stage .v135-table-cards dl>div+div{margin-top:12px}
+ #v10-stage .v135-table-cards dt{font-size:12px;font-weight:700;line-height:1.5}
+ #v10-stage .v135-table-cards dd{font-size:14px;line-height:1.5;margin:3px 0 0;overflow-wrap:anywhere}
  #v10-stage .v10-component-shell .v10-hero,#v10-stage .v10-component-shell .v10-closing{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:1100px),(max-height:650px){

@@ -17,7 +17,7 @@ for(const deck of ['StressClinical','StressCharts','StressImages'])test(`${deck}
    await slide.evaluate(async el=>{await Promise.all(el.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{})));});
    const metrics=await slide.evaluate(el=>{
     const issues=[];
-    const text=[...el.querySelectorAll('h1,h2,h3,p,li,td,th,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table,details:not([open])')&&n.getClientRects().length);
+    const text=[...el.querySelectorAll('h1,h2,h3,p,li,td,th,dt,dd,blockquote')].filter(n=>!n.closest('[aria-hidden="true"],.v10-chart-table,details:not([open])')&&n.getClientRects().length);
     for(const n of text){
      const range=document.createRange();range.selectNodeContents(n);
      const r=range.getBoundingClientRect(),style=getComputedStyle(n);
